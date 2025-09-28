@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"pos_find_rectangle",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"pos_find_rectangle",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

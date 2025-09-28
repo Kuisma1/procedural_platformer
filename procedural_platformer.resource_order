@@ -1,0 +1,28 @@
+{
+  "FolderOrderSettings":[
+    {"name":"Animation Curves","order":12,"path":"folders/Animation Curves.yy",},
+    {"name":"Extensions","order":14,"path":"folders/Extensions.yy",},
+    {"name":"Fonts","order":7,"path":"folders/Fonts.yy",},
+    {"name":"Notes","order":13,"path":"folders/Notes.yy",},
+    {"name":"Objects","order":9,"path":"folders/Objects.yy",},
+    {"name":"Particle Systems","order":15,"path":"folders/Particle Systems.yy",},
+    {"name":"Paths","order":4,"path":"folders/Paths.yy",},
+    {"name":"Rooms","order":10,"path":"folders/Rooms.yy",},
+    {"name":"Scripts","order":5,"path":"folders/Scripts.yy",},
+    {"name":"Macros & enums","order":4,"path":"folders/Scripts/Macros & enums.yy",},
+    {"name":"Sequences","order":11,"path":"folders/Sequences.yy",},
+    {"name":"Shaders","order":6,"path":"folders/Shaders.yy",},
+    {"name":"Sounds","order":3,"path":"folders/Sounds.yy",},
+    {"name":"Sprites","order":1,"path":"folders/Sprites.yy",},
+    {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
+    {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
+  ],
+  "ResourceOrderSettings":[
+    {"name":"obj_world","order":1,"path":"objects/obj_world/obj_world.yy",},
+    {"name":"enums","order":1,"path":"scripts/enums/enums.yy",},
+    {"name":"pos_find_rectangle","order":1,"path":"scripts/pos_find_rectangle/pos_find_rectangle.yy",},
+    {"name":"room_utils","order":6,"path":"scripts/room_utils/room_utils.yy",},
+    {"name":"world_utils","order":5,"path":"scripts/world_utils/world_utils.yy",},
+    {"name":"spr_fire_piece","order":1,"path":"sprites/spr_fire_piece/spr_fire_piece.yy",},
+  ],
+}

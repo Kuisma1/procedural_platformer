@@ -1,0 +1,9 @@
+enum BIOME {
+	CAVERNS,
+	LUSH_CAVES
+}
+
+enum STRUCTURE {
+	NONE,
+	STRONGHOLD
+}
