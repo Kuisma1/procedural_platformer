@@ -6,6 +6,7 @@ function World(_seed) constructor {
 function Chunk(_x, _y) constructor {
 	x = _x;
 	y = _y;
+	overlapping_rooms = [];
 }
 
 /// @description This function gives the candidate room given by the standard world generation at a given subroom.
@@ -102,4 +103,10 @@ function world_save_structure_anchor_to_disk(_world, _anchor_x, _anchor_y) {
 
 function world_load_room_from_disk(_world, _subroom_x, _subroom_y) {
 	
+}
+
+function world_get_room(_world, _subroom_x, _subroom_y) {
+	// 1. attempt to get room from memory
+	// 2. attempt to get room from the disk
+	// 3. generate room, save it and get it
 }
