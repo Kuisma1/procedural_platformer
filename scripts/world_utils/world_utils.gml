@@ -115,20 +115,6 @@ function world_room_exists_in_memory(_world, _subroom_x, _subroom_y) {
 	return false;
 }
 
-function world_load_room_from_memory(_world, _subroom_x, _subroom_y) {
-	var _chunk_x = floor(_subroom_x / CHUNK_WIDTH);
-	var _chunk_y = floor(_subroom_y / CHUNK_HEIGHT);
-	var _chunk_key = string(_chunk_x) + "_" + string(_chunk_y);
-	var _chunk = _world.chunks[$ _chunk_key];
-	var _overlapping_rooms_count = array_length(_chunk.overlapping_rooms);
-	for (var _i = 0; _i < _overlapping_rooms_count; _i++) {
-		var _overlapping_room = _chunk.overlapping_rooms[_i];
-		if (_overlapping_room.x <= _subroom_x && _subroom_x < _overlapping_room.x + _overlapping_room.width && _overlapping_room.y <= _subroom_y && _subroom_y < _overlapping_room.y + _overlapping_room.height) {
-			return _overlapping_room;
-		}
-	}
-}
-
 function world_load_room_from_disk(_world, _subroom_x, _subroom_y) {
 	var _chunk_x = floor(_subroom_x / CHUNK_WIDTH);
 	var _chunk_y = floor(_subroom_y / CHUNK_HEIGHT);
@@ -158,16 +144,19 @@ function world_load_room_from_disk(_world, _subroom_x, _subroom_y) {
 	}
 }
 
+/// @desc This function loads the room containing the given subroom point into memory. If the room is loaded for the first time, its also saved onto the disk. All rooms loaded at the same time are saved onto the disk.
 function world_load_room(_world, _subroom_x, _subroom_y) {
-	// 1. attempt to get room from memory
+	// 1. If the room is already in memory, do nothing.
 	if world_room_exists_in_memory(_world, _subroom_x, _subroom_y) {
-		return world_load_room_from_memory(_world, _subroom_x, _subroom_y);
+		show_debug_message("Loading room: Room already loaded");
+		return;
 	}
-	// 2. attempt to get room from the disk
+	// If the room is on the disk, load it into memory
 	if world_room_exists_on_disk(_world, _subroom_x, _subroom_y) {
 		var _room = world_load_room_from_disk(_world, _subroom_x, _subroom_y);
 		world_save_room_in_memory(_world, _room);
-		return _room;
+		show_debug_message("Loading room: Room found on disk and loaded");
+		return;
 	}
 	
 	// 3. Generate all nearby ungenerated structures and look for room in them
@@ -175,6 +164,27 @@ function world_load_room(_world, _subroom_x, _subroom_y) {
 	// 4. Generate the room at subroom_x, subroom_y using standard generation
 }
 
+// Saves the room in memory containing 
 function world_unload_room(_world, _subroom_x, _subroom_y) {
 	// ...
 }
+
+/// @desc This function returns the room containing the given subroom point if it's found in memory, undefined otherwise.
+function world_get_room(_world, _subroom_x, _subroom_y) {
+	if world_room_exists_in_memory(_world, _subroom_x, _subroom_y) {
+		var _chunk_x = floor(_subroom_x / CHUNK_WIDTH);
+		var _chunk_y = floor(_subroom_y / CHUNK_HEIGHT);
+		var _chunk_key = string(_chunk_x) + "_" + string(_chunk_y);
+		var _chunk = _world.chunks[$ _chunk_key];
+		var _overlapping_rooms_count = array_length(_chunk.overlapping_rooms);
+		for (var _i = 0; _i < _overlapping_rooms_count; _i++) {
+			var _overlapping_room = _chunk.overlapping_rooms[_i];
+			if (_overlapping_room.x <= _subroom_x && _subroom_x < _overlapping_room.x + _overlapping_room.width && _overlapping_room.y <= _subroom_y && _subroom_y < _overlapping_room.y + _overlapping_room.height) {
+				return _overlapping_room;
+			}
+		}
+	} else {
+		return undefined;
+	}
+}
+
