@@ -115,6 +115,7 @@ function world_room_exists_in_memory(_world, _subroom_x, _subroom_y) {
 	return false;
 }
 
+/// @desc This function looks for a room on the disk and saves it into memory
 function world_load_room_from_disk(_world, _subroom_x, _subroom_y) {
 	var _chunk_x = floor(_subroom_x / CHUNK_WIDTH);
 	var _chunk_y = floor(_subroom_y / CHUNK_HEIGHT);
@@ -137,7 +138,8 @@ function world_load_room_from_disk(_world, _subroom_x, _subroom_y) {
 				var _room2 = _chunk2.rooms[_j];
 				if (_room2.x == _x && _room2.y == _y) {
 					buffer_delete(_buffer);
-					return _room2;
+					return _room2; // Get rid of this
+					// TODO: Save _room2 to memory
 				}
 			}
 		}
@@ -153,8 +155,7 @@ function world_load_room(_world, _subroom_x, _subroom_y) {
 	}
 	// If the room is on the disk, load it into memory
 	if world_room_exists_on_disk(_world, _subroom_x, _subroom_y) {
-		var _room = world_load_room_from_disk(_world, _subroom_x, _subroom_y);
-		world_save_room_in_memory(_world, _room);
+		world_load_room_from_disk(_world, _subroom_x, _subroom_y);
 		show_debug_message("Loading room: Room found on disk and loaded");
 		return;
 	}
