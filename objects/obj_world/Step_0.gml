@@ -6,3 +6,5 @@ if mouse_check_button_pressed(mb_left) {
 	var _overlapping_candidates = world_get_overlapping_candidate_rooms(world, structure);
 	affected = rooms_difference(_overlapping_candidates, structure);
 }
+
+// A change example
