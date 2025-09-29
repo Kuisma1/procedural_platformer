@@ -20,6 +20,10 @@ function world_get_candidate_room(_world, _subroom_x, _subroom_y) {
 	return _room;
 }
 
+/// @desc This function returns an array of candidate rooms that overlap the given array of rooms.
+/// @param {Struct.World} _world The world to use the seed of
+/// @param {Array<Struct.Room>} _rooms The group of rooms
+/// @return {Array<Struct.Room>}
 function world_get_overlapping_candidate_rooms(_world, _rooms) {
 	var _candidate_rooms = [];
 	var _count = array_length(_rooms);
@@ -46,6 +50,7 @@ function world_get_overlapping_candidate_rooms(_world, _rooms) {
 	return _candidate_rooms;
 }
 
+/// @desc This runction returns whether a room intersecting the given subroom point is on the disk
 function world_room_exists_on_disk(_world, _subroom_x, _subroom_y) {
 	var _chunk_x = floor(_subroom_x / CHUNK_WIDTH);
 	var _chunk_y = floor(_subroom_y / CHUNK_HEIGHT);
