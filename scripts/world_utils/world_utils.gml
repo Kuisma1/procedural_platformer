@@ -110,7 +110,7 @@ function world_room_exists_in_memory(_world, _subroom_x, _subroom_y) {
 	return false;
 }
 
-function world_get_room_from_memory(_world, _subroom_x, _subroom_y) {
+function world_load_room_from_memory(_world, _subroom_x, _subroom_y) {
 	var _chunk_x = floor(_subroom_x / CHUNK_WIDTH);
 	var _chunk_y = floor(_subroom_y / CHUNK_HEIGHT);
 	var _chunk_key = string(_chunk_x) + "_" + string(_chunk_y);
@@ -123,8 +123,8 @@ function world_get_room_from_memory(_world, _subroom_x, _subroom_y) {
 		}
 	}
 }
-	
-function world_get_room_from_disk(_world, _subroom_x, _subroom_y) {
+
+function world_load_room_from_disk(_world, _subroom_x, _subroom_y) {
 	var _chunk_x = floor(_subroom_x / CHUNK_WIDTH);
 	var _chunk_y = floor(_subroom_y / CHUNK_HEIGHT);
 	var _chunk_key = string(_chunk_x) + "_" + string(_chunk_y);
@@ -153,16 +153,23 @@ function world_get_room_from_disk(_world, _subroom_x, _subroom_y) {
 	}
 }
 
-function world_get_room(_world, _subroom_x, _subroom_y) {
+function world_load_room(_world, _subroom_x, _subroom_y) {
 	// 1. attempt to get room from memory
 	if world_room_exists_in_memory(_world, _subroom_x, _subroom_y) {
-		return world_get_room_from_memory(_world, _subroom_x, _subroom_y);
+		return world_load_room_from_memory(_world, _subroom_x, _subroom_y);
 	}
 	// 2. attempt to get room from the disk
 	if world_room_exists_on_disk(_world, _subroom_x, _subroom_y) {
-		//return world_get_room_from_disk(_world, _subroom_x, _subroom_y)
+		var _room = world_load_room_from_disk(_world, _subroom_x, _subroom_y);
+		world_save_room_in_memory(_world, _room);
+		return _room;
 	}
+	
 	// 3. Generate all nearby ungenerated structures and look for room in them
 	
 	// 4. Generate the room at subroom_x, subroom_y using standard generation
+}
+
+function world_unload_room(_world, _subroom_x, _subroom_y) {
+	// ...
 }
