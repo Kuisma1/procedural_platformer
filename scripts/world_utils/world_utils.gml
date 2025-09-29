@@ -120,28 +120,39 @@ function world_load_room_from_disk(_world, _subroom_x, _subroom_y) {
 	var _chunk_x = floor(_subroom_x / CHUNK_WIDTH);
 	var _chunk_y = floor(_subroom_y / CHUNK_HEIGHT);
 	var _chunk_key = string(_chunk_x) + "_" + string(_chunk_y);
+	
 	var _rooms_bounds_filepath = "world/chunks/chunk_" + _chunk_key + "/rooms.bounds";
-	var _buffer = buffer_load(_rooms_bounds_filepath);
-	var _rooms_bounds_count = buffer_get_size(_buffer) div (4 * buffer_sizeof(buffer_s32));
-	for (var _i = 0; _i < _rooms_bounds_count; _i++) {
-		var _x = buffer_read(_buffer, buffer_s32);
-		var _y = buffer_read(_buffer, buffer_s32);
-		var _width = buffer_read(_buffer, buffer_s32);
-		var _height = buffer_read(_buffer, buffer_s32);
-		if (_x <= _subroom_x && _subroom_x < _x + _width && _y <= _subroom_y && _subroom_y < _y + _height) {
-			var _chunk2_x = floor(_x / CHUNK_WIDTH);
-			var _chunk2_y = floor(_y / CHUNK_HEIGHT);
-			var _chunk2_key = string(_chunk2_x) + "_" + string(_chunk2_y);
-			var _chunk2 = _world.chunks[$ _chunk2_key];
-			var _chunk2_rooms_count = array_length(_chunk2.rooms);
-			for (var _j = 0; _j < _chunk2_rooms_count; _j++) {
-				var _room2 = _chunk2.rooms[_j];
-				if (_room2.x == _x && _room2.y == _y) {
-					buffer_delete(_buffer);
-					return _room2; // Get rid of this
-					// TODO: Save _room2 to memory
-				}
-			}
+	
+	var _bounds_buffer = buffer_load(_rooms_bounds_filepath);
+	var _overlapping_rooms_count = buffer_get_size(_bounds_buffer) div (4 * buffer_sizeof(buffer_s32));
+	
+	for (var _i = 0; _i < _overlapping_rooms_count; _i++) {
+		var _x = buffer_read(_bounds_buffer, buffer_s32);
+		var _y = buffer_read(_bounds_buffer, buffer_s32);
+		var _width = buffer_read(_bounds_buffer, buffer_s32);
+		var _height = buffer_read(_bounds_buffer, buffer_s32);
+		// Does this room contain the queried subroom point?
+		if (_x <= _subroom_x && _subroom_x < _x + _width 
+		 && _y <= _subroom_y && _subroom_y < _y + _height) {
+			// Delete buffer holding room bounds
+			buffer_delete(_bounds_buffer);
+			// Determine owning chunk of room (top-left corner)
+            var _owner_chunk_x = floor(_x / CHUNK_WIDTH);
+            var _owner_chunk_y = floor(_y / CHUNK_HEIGHT);
+            var _owner_chunk_key = string(_owner_chunk_x) + "_" + string(_owner_chunk_y);
+			// Load the actual room file from the owner chunk
+            var _room_path = "world/chunks/chunk_" + _owner_chunk_key + "/rooms/room_" + string(_x) + "_" + string(_y);
+			var _room_buffer = buffer_load(_room_path);
+			var _room = room_create_from_buffer(_room_buffer);
+			var _chunk = _world.chunks[$ _owner_chunk_key];
+			if is_undefined(_chunk) {
+                _chunk = new Chunk(_owner_chunk_x, _owner_chunk_y);
+                _world.chunks[$ _owner_chunk_key] = _chunk;
+            }
+			// Save room into memory
+            array_push(_chunk.overlapping_rooms, _room);
+			buffer_delete(_room_buffer);
+            return; // loaded successfully
 		}
 	}
 }
@@ -188,4 +199,3 @@ function world_get_room(_world, _subroom_x, _subroom_y) {
 		return undefined;
 	}
 }
-

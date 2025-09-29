@@ -54,3 +54,12 @@ function rooms_difference(_rooms1, _rooms2) {
 	}
 	return _results;
 }
+	
+function room_create_from_buffer(_buffer) {
+	var _x = buffer_read(_buffer, buffer_s32);
+	var _y = buffer_read(_buffer, buffer_s32);
+	var _w = buffer_read(_buffer, buffer_s32);
+	var _h = buffer_read(_buffer, buffer_s32);
+	var _room = new Room(_x, _y, _w, _h);
+	return _room;
+}
