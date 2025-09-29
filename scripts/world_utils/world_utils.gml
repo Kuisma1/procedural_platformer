@@ -114,18 +114,28 @@ function world_save_room_to_disk(_world, _subroom_x, _subroom_y) {
 	
 }
 
-function world_save_structure_anchor_to_disk(_world, _anchor_x, _anchor_y) {
-	
+function world_get_room_from_memory(_world, _subroom_x, _subroom_y) {
+	var _chunk_x = floor(_subroom_x / CHUNK_WIDTH);
+	var _chunk_y = floor(_subroom_y / CHUNK_HEIGHT);
+	var _chunk_key = string(_chunk_x) + "_" + string(_chunk_y);
+	var _chunk = _world.chunks[$ _chunk_key];
+	var _overlapping_rooms_count = array_length(_chunk.overlapping_rooms);
+	for (var _i = 0; _i < _overlapping_rooms_count; _i++) {
+		var _overlapping_room = _chunk.overlapping_rooms[_i];
+		if (_overlapping_room.x <= _subroom_x && _subroom_x < _overlapping_room.x + _overlapping_room.width && _overlapping_room.y <= _subroom_y && _subroom_y < _overlapping_room.y + _overlapping_room.height) {
+			return _overlapping_room;
+		}
+	}
 }
-
-function world_load_room_from_disk(_world, _subroom_x, _subroom_y) {
+	
+function world_get_room_from_disk(_world, _subroom_x, _subroom_y) {
 	
 }
 
 function world_get_room(_world, _subroom_x, _subroom_y) {
 	// 1. attempt to get room from memory
 	if world_room_exists_in_memory(_world, _subroom_x, _subroom_y) {
-		//return world_get_room_from_memory(_world, _subroom_x, _subroom_y);
+		return world_get_room_from_memory(_world, _subroom_x, _subroom_y);
 	}
 	// 2. attempt to get room from the disk
 	if world_room_exists_on_disk(_world, _subroom_x, _subroom_y) {
