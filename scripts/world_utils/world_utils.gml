@@ -124,6 +124,14 @@ function world_load_room_from_disk(_world, _subroom_x, _subroom_y) {
 
 function world_get_room(_world, _subroom_x, _subroom_y) {
 	// 1. attempt to get room from memory
+	if world_room_exists_in_memory(_world, _subroom_x, _subroom_y) {
+		//return world_get_room_from_memory(_world, _subroom_x, _subroom_y);
+	}
 	// 2. attempt to get room from the disk
-	// 3. generate room, save it and get it
+	if world_room_exists_on_disk(_world, _subroom_x, _subroom_y) {
+		//return world_get_room_from_disk(_world, _subroom_x, _subroom_y)
+	}
+	// 3. Generate all nearby ungenerated structures and look for room in them
+	
+	// 4. Generate the room at subroom_x, subroom_y using standard generation
 }
