@@ -13,7 +13,28 @@ function world_get_candidate_room(_world, _subroom_x, _subroom_y) {
 	return _room;
 }
 	
-
+function world_get_door_directions(_world, _subroom_x, _subroom_y) {
+	var _directions = [DIRECTION.RIGHT,
+					   DIRECTION.DOWN,
+					   DIRECTION.LEFT,
+					   DIRECTION.UP];
+	for (var _i = 0; _i < 4; _i++) {
+		var _direction = _directions[_i];
+		if _direction == DIRECTION.RIGHT {
+			var _subroom2_x = _subroom_x + 1;
+			var _subroom2_y = _subroom_y;
+		} else if _direction == DIRECTION.DOWN {
+			var _subroom2_x = _subroom_x;
+			var _subroom2_y = _subroom_y + 1;
+		} else if _direction == DIRECTION.LEFT {
+			var _subroom2_x = _subroom_x - 1;
+			var _subroom2_y = _subroom_y;
+		} else if _direction == DIRECTION.UP {
+			var _subroom2_x = _subroom_x;
+			var _subroom2_y = _subroom_y - 1;
+		}
+	}
+}
 
 /// @desc This function returns an array of candidate rooms that overlap the given array of rooms.
 /// @param {Struct.World} _world The world to use the seed of

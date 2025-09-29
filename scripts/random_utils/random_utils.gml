@@ -5,3 +5,12 @@ function hash(_x, _y, _seed) {
     _h = (_h ^ (_h >> 13)) * 1274126177;
     return _h; // ensure non-negative
 }
+
+function hash_n() {
+    var h = 2166136261; // FNV offset basis (example)
+    for (var i = 0; i < argument_count; i++) {
+        h = h ^ argument[i];
+        h = h * 16777619; // FNV prime
+    }
+    return h;
+}
