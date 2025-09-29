@@ -99,6 +99,26 @@ function world_structure_anchor_exists_on_disk(_world, _anchor_x, _anchor_y) {
 	return false;
 }
 
+function world_save_structure_anchor_to_disk(_world, _anchor_x, _anchor_y) {
+	var _chunk_x = floor(_anchor_x / CHUNK_WIDTH);
+	var _chunk_y = floor(_anchor_y / CHUNK_HEIGHT);
+	var _chunk_key = string(_chunk_x) + "_" + string(_chunk_y);
+	var _structures_anchors_path = "world/chunks/chunk_" + _chunk_key + "/structures.anchors";
+	if file_exists(_structures_anchors_path) {
+		var _buffer = buffer_load(_structures_anchors_path);
+		buffer_seek(_buffer, buffer_seek_end, 0);
+		buffer_write(_buffer, buffer_s32, _anchor_x);
+		buffer_write(_buffer, buffer_s32, _anchor_y);
+		buffer_save(_buffer, _structures_anchors_path);
+		buffer_delete(_buffer);
+	} else {
+		var _buffer = buffer_create(2 * buffer_sizeof(buffer_s32), buffer_grow, 1);
+		buffer_write(_buffer, buffer_s32, _anchor_x);
+		buffer_write(_buffer, buffer_s32, _anchor_y);
+		buffer_save(_buffer, _structures_anchors_path);
+		buffer_delete(_buffer);
+	}
+}
 
 function world_room_exists_in_memory(_world, _subroom_x, _subroom_y) {
 	var _chunk_x = floor(_subroom_x / CHUNK_WIDTH);
@@ -143,7 +163,7 @@ function world_load_room_from_disk(_world, _subroom_x, _subroom_y) {
             var _owner_chunk_y = floor(_y / CHUNK_HEIGHT);
             var _owner_chunk_key = string(_owner_chunk_x) + "_" + string(_owner_chunk_y);
 			// Load the actual room file from the owner chunk
-            var _room_path = "world/chunks/chunk_" + _owner_chunk_key + "/rooms/room_" + string(_x) + "_" + string(_y);
+            var _room_path = "world/chunks/chunk_" + _owner_chunk_key + "/rooms/room_" + string(_x) + "_" + string(_y) + ".bin";
 			var _room_buffer = buffer_load(_room_path);
 			var _room = room_create_from_buffer(_room_buffer);
 			var _chunk = _world.chunks[$ _owner_chunk_key];
@@ -156,6 +176,70 @@ function world_load_room_from_disk(_world, _subroom_x, _subroom_y) {
 			buffer_delete(_room_buffer);
             return; // loaded successfully
 		}
+	}
+}
+
+/// @desc Save a room to disk (both its owning chunk + overlap chunks)
+/// @param {Struct.World} _world
+/// @param {Struct.Room}  _room
+function world_save_room_to_disk(_world, _room) {
+    // --- 1. Determine owning chunk (top-left corner) ---
+    var _owner_chunk_x = floor(_room.x / CHUNK_WIDTH);
+    var _owner_chunk_y = floor(_room.y / CHUNK_HEIGHT);
+    var _owner_chunk_key = string(_owner_chunk_x) + "_" + string(_owner_chunk_y);
+    var _owner_chunk_path = "world/chunks/chunk_" + _owner_chunk_key;
+	var _owner_rooms_path = _owner_chunk_path + "/rooms";
+    // Ensure directory exists (pseudo, depends on your filesystem helper)
+    if !directory_exists(_owner_rooms_path) {
+        directory_create(_owner_rooms_path);
+    }
+
+    // --- 2. Save full room struct into its file ---
+    var _room_path = _owner_rooms_path + "/room_" + string(_room.x) + "_" + string(_room.y) + ".bin";
+    var _buffer = room_create_buffer(_room);
+    buffer_save(_buffer, _room_path);
+    buffer_delete(_buffer);
+
+    // --- 3. Update rooms.bounds in all overlapping chunks ---
+    var _min_chunk_x = floor(_room.x / CHUNK_WIDTH);
+    var _max_chunk_x = floor((_room.x + _room.width - 1) / CHUNK_WIDTH);
+    var _min_chunk_y = floor(_room.y / CHUNK_HEIGHT);
+    var _max_chunk_y = floor((_room.y + _room.height - 1) / CHUNK_HEIGHT);
+
+    for (var _cx = _min_chunk_x; _cx <= _max_chunk_x; _cx++) {
+        for (var _cy = _min_chunk_y; _cy <= _max_chunk_y; _cy++) {
+            var _chunk_key = string(_cx) + "_" + string(_cy);
+            var _chunk_path = "world/chunks/chunk_" + _chunk_key;
+            if !directory_exists(_chunk_path) {
+                directory_create(_chunk_path);
+            }
+            
+            var _bounds_path = _chunk_path + "/rooms.bounds";
+            var _bounds_buffer;
+            if file_exists(_bounds_path) {
+                _bounds_buffer = buffer_load(_bounds_path);
+                buffer_seek(_bounds_buffer, buffer_seek_end, 0);
+            } else {
+                _bounds_buffer = buffer_create(4 * buffer_sizeof(buffer_s32), buffer_grow, 1);
+            }
+
+            // Append this room’s bounding box
+            buffer_write(_bounds_buffer, buffer_s32, _room.x);
+            buffer_write(_bounds_buffer, buffer_s32, _room.y);
+            buffer_write(_bounds_buffer, buffer_s32, _room.width);
+            buffer_write(_bounds_buffer, buffer_s32, _room.height);
+
+            buffer_save(_bounds_buffer, _bounds_path);
+            buffer_delete(_bounds_buffer);
+        }
+    }
+}
+
+function world_structure_at_anchor(_world, _anchor_x, _anchor_y) {
+	if _anchor_x == 100 && _anchor_y == 100 {
+		return STRUCTURE.STRONGHOLD;
+	} else {
+		return STRUCTURE.NONE;
 	}
 }
 
@@ -173,9 +257,36 @@ function world_load_room(_world, _subroom_x, _subroom_y) {
 		return;
 	}
 	
-	// 3. Generate all nearby ungenerated structures and look for room in them
-	
-	// 4. Generate the room at subroom_x, subroom_y using standard generation
+	// 3. Generate all nearby ungenerated structures and save them to disk
+	for (var _candidate_anchor_x = _subroom_x - STRUCTURE_GENERATION_RADIUS; _candidate_anchor_x <= _subroom_x + STRUCTURE_GENERATION_RADIUS; _candidate_anchor_x++) {
+		for (var _candidate_anchor_y = _subroom_y - STRUCTURE_GENERATION_RADIUS; _candidate_anchor_y <= _subroom_y + STRUCTURE_GENERATION_RADIUS; _candidate_anchor_y++) {
+			var _structure = world_structure_at_anchor(_world, _candidate_anchor_x, _candidate_anchor_y);
+			if _structure == STRUCTURE.STRONGHOLD {
+				var _anchor_x = _candidate_anchor_x;
+				var _anchor_y = _candidate_anchor_y;
+				if !world_structure_anchor_exists_on_disk(_world, _anchor_x, _anchor_y) {
+					var _structure_rooms = [new Room(_candidate_anchor_x - 5, _candidate_anchor_y - 5, 11, 11)];
+					var _affected_rooms = rooms_difference(world_get_overlapping_candidate_rooms(_world, _structure_rooms), _structure_rooms);
+					var _together = array_concat(_structure_rooms, _affected_rooms);
+					var _rooms_count = array_length(_together);
+					for (var _i = 0; _i < _rooms_count; _i++) {
+						var _room = _together[_i];
+						world_save_room_to_disk(_world, _room);
+					}
+					world_save_structure_anchor_to_disk(_world, _anchor_x, _anchor_y);
+				}
+			}
+		}
+	}
+	// 4. Attempt to load the room from the disk again
+	// If the room is on the disk, load it into memory
+	if world_room_exists_on_disk(_world, _subroom_x, _subroom_y) {
+		world_load_room_from_disk(_world, _subroom_x, _subroom_y);
+		show_debug_message("Loading room: Room found on disk after structure generation, and loaded");
+		return;
+	}
+	// 5. Generate the room at subroom_x, subroom_y using standard generation
+	var _room = world_get_candidate_room(_world, _subroom_x, _subroom_y)
 }
 
 // Saves the room in memory containing 
