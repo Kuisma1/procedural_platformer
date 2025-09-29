@@ -34,7 +34,7 @@ function room_difference(_room1, _room2) {
     }
     return _result;
 }
-
+/// @return {Array<Struct.Room>}
 function rooms_difference(_rooms1, _rooms2) {
     var _results = [];
 	
