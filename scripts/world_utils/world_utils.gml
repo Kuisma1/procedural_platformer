@@ -1,5 +1,6 @@
 function World(_seed) constructor {
 	seed = _seed;
+	chunks = {};
 }
 
 function Chunk(_x, _y) constructor {
@@ -45,11 +46,50 @@ function world_get_overlapping_candidate_rooms(_world, _rooms) {
 }
 
 function world_room_exists_on_disk(_world, _subroom_x, _subroom_y) {
-	
+	var _chunk_x = floor(_subroom_x / CHUNK_WIDTH);
+	var _chunk_y = floor(_subroom_y / CHUNK_HEIGHT);
+	var _chunk_key = string(_chunk_x) + "_" + string(_chunk_y);
+	var _chunk_filepath = "world/chunks/chunk_" + _chunk_key;
+	if !file_exists(_chunk_filepath) {
+		return false;
+	}
+	var _rooms_bounds_filepath = _chunk_filepath + "/rooms.bounds";
+	var _buffer = buffer_load(_rooms_bounds_filepath);
+	var _room_bounds_count = buffer_get_size(_buffer) div (4 * buffer_sizeof(buffer_s32));
+	for (var _i = 0; _i < _room_bounds_count; _i++) {
+		var _x = buffer_read(_buffer, buffer_s32);
+		var _y = buffer_read(_buffer, buffer_s32);
+		var _width = buffer_read(_buffer, buffer_s32);
+		var _height = buffer_read(_buffer, buffer_s32);
+		if (_x <= _subroom_x && _subroom_x < _x + _width && _y <= _subroom_y && _subroom_y < _y + _height) {
+			buffer_delete(_buffer);
+			return true;
+		}
+	}
+	buffer_delete(_buffer);
+	return false;
 }
 
 function world_structure_anchor_exists_on_disk(_world, _anchor_x, _anchor_y) {
-	
+	var _chunk_x = floor(_anchor_x / CHUNK_WIDTH);
+	var _chunk_y = floor(_anchor_y / CHUNK_HEIGHT);
+	var _chunk_key = string(_chunk_x) + "_" + string(_chunk_y);
+	var _chunk_filepath = "world/chunks/chunk_" + _chunk_key;
+	if !file_exists(_chunk_filepath) {
+		return false;
+	}
+	var _structures_anchors_filepath = _chunk_filepath + "/structures.anchors";
+	var _buffer = buffer_load(_rooms_bounds_filepath);
+	var _structures_anchors_count = buffer_get_size(_buffer) div (2 * buffer_sizeof(buffer_s32));
+	for (var _i = 0; _i < _structures_anchors_count; _i++) {
+		var _x = buffer_read(_buffer, buffer_s32);
+		var _y = buffer_read(_buffer, buffer_s32);
+		if _x == _anchor_x && _y == _anchor_y {
+			buffer_delete(_buffer);'
+			return true;
+		}
+	}
+	return false;
 }
 
 function world_save_room_to_disk(_world, _subroom_x, _subroom_y) {
