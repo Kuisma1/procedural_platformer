@@ -2,6 +2,11 @@ function World(_seed) constructor {
 	seed = _seed;
 }
 
+function Chunk(_x, _y) constructor {
+	x = _x;
+	y = _y;
+}
+
 /// @description This function gives the candidate room given by the standard world generation at a given subroom.
 /// @param {Struct.World} _world The world to use the seed of
 /// @param {Real} _subroom_x The x-coordinate to be covered by the candidate room
