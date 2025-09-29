@@ -36,6 +36,8 @@
   },
   "name":"procedural_platformer",
   "resources":[
+    {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
+    {"id":{"name":"obj_tile","path":"objects/obj_tile/obj_tile.yy",},},
     {"id":{"name":"obj_world","path":"objects/obj_world/obj_world.yy",},},
     {"id":{"name":"prt_draw_blood","path":"particles/prt_draw_blood/prt_draw_blood.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
@@ -45,7 +47,9 @@
     {"id":{"name":"random_utils","path":"scripts/random_utils/random_utils.yy",},},
     {"id":{"name":"room_utils","path":"scripts/room_utils/room_utils.yy",},},
     {"id":{"name":"world_utils","path":"scripts/world_utils/world_utils.yy",},},
+    {"id":{"name":"spr_","path":"sprites/spr_/spr_.yy",},},
     {"id":{"name":"spr_fire_piece","path":"sprites/spr_fire_piece/spr_fire_piece.yy",},},
+    {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
     {"id":{"name":"spr_tile","path":"sprites/spr_tile/spr_tile.yy",},},
   ],
   "resourceType":"GMProject",
