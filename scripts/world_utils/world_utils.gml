@@ -76,6 +76,7 @@ function world_room_exists_on_disk(_world, _subroom_x, _subroom_y) {
 	return false;
 }
 
+
 function world_structure_anchor_exists_on_disk(_world, _anchor_x, _anchor_y) {
 	var _chunk_x = floor(_anchor_x / CHUNK_WIDTH);
 	var _chunk_y = floor(_anchor_y / CHUNK_HEIGHT);
@@ -97,6 +98,7 @@ function world_structure_anchor_exists_on_disk(_world, _anchor_x, _anchor_y) {
 	}
 	return false;
 }
+
 
 function world_room_exists_in_memory(_world, _subroom_x, _subroom_y) {
 	var _chunk_x = floor(_subroom_x / CHUNK_WIDTH);
