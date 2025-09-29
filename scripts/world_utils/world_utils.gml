@@ -1,12 +1,5 @@
 function World(_seed) constructor {
 	seed = _seed;
-	chunks = {};
-}
-
-function Chunk(_x, _y) constructor {
-	x = _x;
-	y = _y;
-	overlapping_rooms = [];
 }
 
 /// @description This function gives the candidate room given by the standard world generation at a given subroom.
@@ -19,6 +12,8 @@ function world_get_candidate_room(_world, _subroom_x, _subroom_y) {
 	var _room = new Room(_rect.x, _rect.y, _rect.w, _rect.h);
 	return _room;
 }
+	
+
 
 /// @desc This function returns an array of candidate rooms that overlap the given array of rooms.
 /// @param {Struct.World} _world The world to use the seed of

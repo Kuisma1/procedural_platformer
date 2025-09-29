@@ -7,3 +7,10 @@ enum STRUCTURE {
 	NONE,
 	STRONGHOLD
 }
+
+enum DIRECTION {
+	RIGHT,
+	LEFT,
+	DOWN,
+	UP
+}

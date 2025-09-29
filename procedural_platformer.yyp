@@ -39,7 +39,6 @@
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_tile","path":"objects/obj_tile/obj_tile.yy",},},
     {"id":{"name":"obj_world","path":"objects/obj_world/obj_world.yy",},},
-    {"id":{"name":"prt_draw_blood","path":"particles/prt_draw_blood/prt_draw_blood.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"enums","path":"scripts/enums/enums.yy",},},
     {"id":{"name":"macros","path":"scripts/macros/macros.yy",},},

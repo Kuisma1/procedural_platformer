@@ -34,7 +34,7 @@ function room_difference(_room1, _room2) {
     }
     return _result;
 }
-/// @return {Array<Struct.Room>}
+
 function rooms_difference(_rooms1, _rooms2) {
     var _results = [];
 	
@@ -53,23 +53,4 @@ function rooms_difference(_rooms1, _rooms2) {
 		_results = array_concat(_results, _rooms_to_process);
 	}
 	return _results;
-}
-	
-function room_create_from_buffer(_buffer) {
-	var _x = buffer_read(_buffer, buffer_s32);
-	var _y = buffer_read(_buffer, buffer_s32);
-	var _w = buffer_read(_buffer, buffer_s32);
-	var _h = buffer_read(_buffer, buffer_s32);
-	var _room = new Room(_x, _y, _w, _h);
-	return _room;
-}
-
-function room_create_buffer(_room) {
-	var _buffer = buffer_create(4 * buffer_sizeof(buffer_s32), buffer_fixed, 1);
-	buffer_write(_buffer, buffer_s32, _room.x);
-	buffer_write(_buffer, buffer_s32, _room.y);
-	buffer_write(_buffer, buffer_s32, _room.width);
-	buffer_write(_buffer, buffer_s32, _room.height);
-	buffer_seek(_buffer, buffer_seek_start, 0);
-	return _buffer;
 }
