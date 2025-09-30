@@ -14,7 +14,7 @@ if _jump && place_meeting(x, y + 1, obj_tile) {
 }
 
 if _jump_released && v_speed < 0 {
-	v_speed = v_speed / 5;
+	v_speed /= 7;
 }
 
 if place_meeting(x + h_speed, y, obj_tile) {

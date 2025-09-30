@@ -1,5 +1,5 @@
-#macro GEN_CHUNK_WIDTH 4
-#macro GEN_CHUNK_HEIGHT 4
+#macro GEN_CHUNK_WIDTH 3
+#macro GEN_CHUNK_HEIGHT 3
 #macro CLUSTER_CHUNK_RADIUS 2
 
 function Line(_horizontal, _pos, _start, _end) constructor {
@@ -49,7 +49,7 @@ function get_line_cluster(_x, _y, _seed) {
 		for (var _line_cy = _cy - CLUSTER_CHUNK_RADIUS; _line_cy <= _cy + CLUSTER_CHUNK_RADIUS; _line_cy++) {
 			var _horizontal = (_line_cx + _line_cy) % 2 == 0;
 			var _old_seed = random_get_seed();
-			random_set_seed(hash(_line_cx, _line_cy, _seed));
+			random_set_seed(hash3(_line_cx, _line_cy, _seed));
 			var _pos = _horizontal ? _line_cy * GEN_CHUNK_HEIGHT + irandom_range(1, GEN_CHUNK_HEIGHT - 1) : _line_cx * GEN_CHUNK_WIDTH + irandom_range(1, GEN_CHUNK_WIDTH - 1);
 			random_set_seed(_old_seed);
 			var _start = _horizontal ? _line_cx * GEN_CHUNK_WIDTH : _line_cy * GEN_CHUNK_HEIGHT;
