@@ -125,7 +125,7 @@ function find_rectangle(_line_cluster, _x, _y) {
 	return _rectangle;
 }
 
-function pos_find_rectangle(_x, _y, _seed) {
+function get_rectangle(_x, _y, _seed) {
 	var _line_cluster = get_line_cluster(_x, _y, _seed);
 	expand_lines(_line_cluster);
 	var _rectangle = find_rectangle(_line_cluster, _x, _y);

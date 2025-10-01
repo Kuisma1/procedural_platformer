@@ -5,7 +5,7 @@
 /// @param {Real} _subroom_y The y-coordinate to be covered by the candidate room
 /// @return {Struct.Room}
 function world_get_candidate_room(_world, _subroom_x, _subroom_y) {
-	var _rect = pos_find_rectangle(_subroom_x, _subroom_y, _world.seed);
+	var _rect = get_rectangle(_subroom_x, _subroom_y, _world.seed);
 	var _room = new Room(_rect.x, _rect.y, _rect.w, _rect.h);
 	return _room;
 }
