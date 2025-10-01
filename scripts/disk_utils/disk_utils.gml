@@ -1,3 +1,6 @@
+/// @desc This function sets (saves) the given room to the disk.
+/// @param {Struct.Room} _room The room to set to disk
+/// @return {Undefined}
 function disk_set_room(_room) {
 	// Determine which chunks the room overlaps
 	var _chunk_x_min = floor(_room.x / CHUNK_SIZE);
@@ -57,12 +60,18 @@ function disk_set_room(_room) {
     buffer_delete(_room_buffer);
 }
 
+/// @desc This function sets (saves) all the rooms in the given array onto the disk.
+/// @param {Array<Struct.Room>} _rooms The array of rooms to set to disk
 function disk_set_rooms(_rooms) {
 	for (var _i = 0; _i < array_length(_rooms); _i++) {
 		disk_set_room(_rooms[_i]);
 	}
 }
 
+/// @desc This function returns the room on the disk that contains the given subroom point, or undefined if it doesn't exist.
+/// @param {Real} _subroom_x The x-coordinate of the subroom point
+/// @param {Real} _subroom_y The y-coordinate of the subroom point
+/// @return {Struct.Room}
 function disk_get_room(_subroom_x, _subroom_y) {
 	// --- Step 1: which chunk does this query point belong to ---
     var _chunk_x = floor(_subroom_x / CHUNK_SIZE);
@@ -130,6 +139,10 @@ function disk_get_room(_subroom_x, _subroom_y) {
     return _room;
 }
 
+/// @desc This function returns true if the room containing the given subroom point exists on disk, false otherwise.
+/// @param {Real} _subroom_x The x-coordinate of the subroom point
+/// @param {Real} _subroom_y The y-coordinate of the subroom point
+/// @return {Bool}
 function disk_room_exists(_subroom_x, _subroom_y) {
     // --- Step 1: determine which chunk this point belongs to ---
     var _chunk_x = floor(_subroom_x / CHUNK_SIZE);
@@ -167,6 +180,8 @@ function disk_room_exists(_subroom_x, _subroom_y) {
     return _exists;
 }
 
+/// @desc This function empties the chunk directory
+/// @return {Undefined}
 function disk_clear() {
     var _chunks_filepath = "world/chunks";
 
