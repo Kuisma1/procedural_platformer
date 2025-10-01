@@ -1,8 +1,37 @@
+/// @desc Constructor for the world struct
+/// @param {Real} _x The x-coordinate of the room
+/// @param {Real} _y The y-coordinate of the room
+/// @param {Real} _width The width of the room
+/// @param {Real} _height The height of the room
 function Room(_x, _y, _width, _height) constructor {
 	x = _x;
 	y = _y;
 	width = _width;
 	height = _height;
+}
+
+/// @desc This function returns the given room in buffer form.
+/// @param {Struct.Room} _room The room to get the buffer of
+/// @return {Id.Buffer}
+function room_get_buffer(_room) {
+	var _buffer = buffer_create(4 * buffer_sizeof(buffer_s32), buffer_fixed, 1);
+	buffer_write(_buffer, buffer_s32, _room.x);
+	buffer_write(_buffer, buffer_s32, _room.y);
+	buffer_write(_buffer, buffer_s32, _room.width);
+	buffer_write(_buffer, buffer_s32, _room.height);
+	return _buffer;
+}
+
+/// @desc This function returns the room of the given buffer of a room.
+/// @param {Id.Buffer} _buffer The buffer to return the room for
+/// @return {Struct.Room}
+function room_get_from_buffer(_buffer) {
+	buffer_seek(_buffer, buffer_seek_start, 0);
+	var _x = buffer_read(_buffer, buffer_s32);
+	var _y = buffer_read(_buffer, buffer_s32);
+	var _w = buffer_read(_buffer, buffer_s32);
+	var _h = buffer_read(_buffer, buffer_s32);
+	return new Room(_x, _y, _w, _h);
 }
 
 function room_difference(_room1, _room2) {
@@ -34,7 +63,7 @@ function room_difference(_room1, _room2) {
     }
     return _result;
 }
-/// @return {Array<Struct.Room>}
+
 function rooms_difference(_rooms1, _rooms2) {
     var _results = [];
 	
@@ -53,23 +82,4 @@ function rooms_difference(_rooms1, _rooms2) {
 		_results = array_concat(_results, _rooms_to_process);
 	}
 	return _results;
-}
-	
-function room_create_from_buffer(_buffer) {
-	var _x = buffer_read(_buffer, buffer_s32);
-	var _y = buffer_read(_buffer, buffer_s32);
-	var _w = buffer_read(_buffer, buffer_s32);
-	var _h = buffer_read(_buffer, buffer_s32);
-	var _room = new Room(_x, _y, _w, _h);
-	return _room;
-}
-
-function room_create_buffer(_room) {
-	var _buffer = buffer_create(4 * buffer_sizeof(buffer_s32), buffer_fixed, 1);
-	buffer_write(_buffer, buffer_s32, _room.x);
-	buffer_write(_buffer, buffer_s32, _room.y);
-	buffer_write(_buffer, buffer_s32, _room.width);
-	buffer_write(_buffer, buffer_s32, _room.height);
-	buffer_seek(_buffer, buffer_seek_start, 0);
-	return _buffer;
 }
