@@ -51,8 +51,6 @@
     {"id":{"name":"room_utils","path":"scripts/room_utils/room_utils.yy",},},
     {"id":{"name":"world_gen_utils","path":"scripts/world_gen_utils/world_gen_utils.yy",},},
     {"id":{"name":"world_utils","path":"scripts/world_utils/world_utils.yy",},},
-    {"id":{"name":"spr_","path":"sprites/spr_/spr_.yy",},},
-    {"id":{"name":"spr_fire_piece","path":"sprites/spr_fire_piece/spr_fire_piece.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
     {"id":{"name":"spr_tile","path":"sprites/spr_tile/spr_tile.yy",},},
   ],
