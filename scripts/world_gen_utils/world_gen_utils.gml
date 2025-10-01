@@ -16,17 +16,16 @@ function world_get_candidate_room(_world, _subroom_x, _subroom_y) {
 /// @return {Array<Struct.Room>}
 function world_get_overlapping_candidate_rooms(_world, _rooms) {
 	var _candidate_rooms = [];
-	var _count = array_length(_rooms);
-	for (var _i = 0; _i < _count; _i++) {
+	for (var _i = 0; _i < array_length(_rooms); _i++) {
 		var _room = _rooms[_i];
 		for (var _x = _room.x; _x < _room.x + _room.width; _x++) {
 			for (var _y = _room.y; _y < _room.y + _room.height; _y++) {
 				var _candidate_to_add = world_get_candidate_room(_world, _x, _y);
 				var _added = false;
-				var _candidate_count = array_length(_candidate_rooms);
-				for (var _j = 0; _j < _candidate_count; _j++) {
+				for (var _j = 0; _j < array_length(_candidate_rooms); _j++) {
 					var _candidate_to_check = _candidate_rooms[_j];
-					if (_candidate_to_add.x == _candidate_to_check.x && _candidate_to_add.y == _candidate_to_check.y) {
+					if (_candidate_to_add.x == _candidate_to_check.x 
+					 && _candidate_to_add.y == _candidate_to_check.y) {
 						_added = true;
 						break;
 					}
@@ -41,32 +40,17 @@ function world_get_overlapping_candidate_rooms(_world, _rooms) {
 }
 
 function world_get_door_directions(_world, _subroom_x, _subroom_y) {
-	var _doors = {};
-	// Right
-	var _h1 = hash2(_subroom_x, _subroom_y);
-	var _subroom2_x = _subroom_x + 1;
-	var _subroom2_y = _subroom_y;
-	var _h2 = hash2(_subroom2_x, _subroom2_y);
-	var _combined_h = hash3(min(_h1, _h2), max(_h1, _h2), _world.seed);
-	struct_set(_doors, "right", hash_to_random01(_combined_h) < 0.3);
-	// Left
-	_subroom2_x = _subroom_x - 1;
-	_subroom2_y = _subroom_y;
-	_h2 = hash2(_subroom2_x, _subroom2_y);
-	_combined_h = hash3(min(_h1, _h2), max(_h1, _h2), _world.seed);
-	struct_set(_doors, "left", hash_to_random01(_combined_h) < 0.3);
-	// Down
-	_subroom2_x = _subroom_x;
-	_subroom2_y = _subroom_y + 1;
-	_h2 = hash2(_subroom2_x, _subroom2_y);
-	_combined_h = hash3(min(_h1, _h2), max(_h1, _h2), _world.seed);
-	struct_set(_doors, "down", hash_to_random01(_combined_h) < 0.3);
-	// Up
-	_subroom2_x = _subroom_x;
-	_subroom2_y = _subroom_y - 1;
-	_h2 = hash2(_subroom2_x, _subroom2_y);
-	_combined_h = hash3(min(_h1, _h2), max(_h1, _h2), _world.seed);
-	struct_set(_doors, "up", hash_to_random01(_combined_h) < 0.3);
-	return _doors;
+    var _doors = {};
+    var _h1 = hash2(_subroom_x, _subroom_y);
+    var _directions = [{name: "right", dx: 1, dy: 0},
+					   {name: "left", dx: -1, dy: 0},
+					   {name: "down", dx: 0, dy: 1},
+					   {name: "up", dx: 0, dy: -1}];
+    for (var i = 0; i < array_length(_directions); i++) {
+        var _direction = _directions[i];
+        var _h2 = hash2(_subroom_x + _direction.dx, _subroom_y + _direction.dy);
+        var _combined = hash3(min(_h1, _h2), max(_h1, _h2), _world.seed);
+        struct_set(_doors, _direction.name, hash_to_random01(_combined) < 0.3);
+    }
+    return _doors;
 }
-	

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"random_utils",
+  "%Name":"loading",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"random_utils",
+  "name":"loading",
   "parent":{
-    "name":"Misc utils",
-    "path":"folders/Scripts/Misc utils.yy",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

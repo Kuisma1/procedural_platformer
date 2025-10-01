@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"pos_find_rectangle",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Misc utils",
+    "path":"folders/Scripts/Misc utils.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
