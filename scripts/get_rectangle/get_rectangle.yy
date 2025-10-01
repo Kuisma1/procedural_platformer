@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"pos_find_rectangle",
+  "%Name":"get_rectangle",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"pos_find_rectangle",
+  "name":"get_rectangle",
   "parent":{
     "name":"Misc utils",
     "path":"folders/Scripts/Misc utils.yy",
