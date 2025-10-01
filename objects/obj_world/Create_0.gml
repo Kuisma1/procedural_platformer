@@ -2,7 +2,7 @@
 
 world = new World(0);
 
-disk_clear();
+
 
 show_debug_message("TEST BEGIN ------------------------------------------>");
 
