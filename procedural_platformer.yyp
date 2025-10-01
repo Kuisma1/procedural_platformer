@@ -40,7 +40,6 @@
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_tile","path":"objects/obj_tile/obj_tile.yy",},},
     {"id":{"name":"obj_world","path":"objects/obj_world/obj_world.yy",},},
-    {"id":{"name":"prt_sys1","path":"particles/prt_sys1/prt_sys1.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"disk_utils","path":"scripts/disk_utils/disk_utils.yy",},},
     {"id":{"name":"enums","path":"scripts/enums/enums.yy",},},
