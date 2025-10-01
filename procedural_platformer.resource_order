@@ -26,7 +26,7 @@
     {"name":"loading","order":10,"path":"scripts/loading/loading.yy",},
     {"name":"random_utils","order":1,"path":"scripts/random_utils/random_utils.yy",},
     {"name":"room_utils","order":3,"path":"scripts/room_utils/room_utils.yy",},
-    {"name":"world_gen_utils","order":6,"path":"scripts/world_gen_utils/world_gen_utils.yy",},
+    {"name":"world_generation_utils","order":6,"path":"scripts/world_generation_utils/world_generation_utils.yy",},
     {"name":"world_utils","order":5,"path":"scripts/world_utils/world_utils.yy",},
   ],
 }

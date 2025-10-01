@@ -24,3 +24,5 @@ function hash_to_random01(_h) {
     // Normalize to [0,1)
     return _uh / 4294967296.0; // 2^32
 }
+
+function 

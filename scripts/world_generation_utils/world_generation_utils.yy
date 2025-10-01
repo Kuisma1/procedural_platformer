@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"world_gen_utils",
+  "%Name":"world_generation_utils",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"world_gen_utils",
+  "name":"world_generation_utils",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",
