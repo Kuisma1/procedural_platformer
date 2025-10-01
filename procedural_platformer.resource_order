@@ -19,8 +19,6 @@
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings":[
-    {"name":"obj_player","order":2,"path":"objects/obj_player/obj_player.yy",},
-    {"name":"obj_tile","order":3,"path":"objects/obj_tile/obj_tile.yy",},
     {"name":"obj_world","order":1,"path":"objects/obj_world/obj_world.yy",},
     {"name":"disk_utils","order":8,"path":"scripts/disk_utils/disk_utils.yy",},
     {"name":"enums","order":1,"path":"scripts/enums/enums.yy",},
@@ -30,6 +28,5 @@
     {"name":"room_utils","order":3,"path":"scripts/room_utils/room_utils.yy",},
     {"name":"world_gen_utils","order":6,"path":"scripts/world_gen_utils/world_gen_utils.yy",},
     {"name":"world_utils","order":5,"path":"scripts/world_utils/world_utils.yy",},
-    {"name":"spr_player","order":2,"path":"sprites/spr_player/spr_player.yy",},
   ],
 }
