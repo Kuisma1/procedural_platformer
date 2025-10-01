@@ -2,8 +2,8 @@ draw_set_color(c_white);
 for (var _i = 0; _i < array_length(world.rooms_list); _i++) {
 	var _room = world.rooms_list[_i];
 	
-	draw_rectangle(SUBROOM_SIZE * _room.x, 
-				   SUBROOM_SIZE * _room.y, 
+	draw_rectangle(SUBROOM_SIZE * _room.x + 1, 
+				   SUBROOM_SIZE * _room.y + 1, 
 				   SUBROOM_SIZE * (_room.x + _room.width) - 1,
 				   SUBROOM_SIZE * (_room.y + _room.height) - 1, 
 				   true);
