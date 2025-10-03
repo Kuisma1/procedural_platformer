@@ -54,3 +54,7 @@ function world_get_door_directions(_world, _subroom_x, _subroom_y) {
     }
     return _doors;
 }
+
+function world_get_biome(_world, _subroom_x, _subroom_y) { // Placeholder
+	return perlin2D(_subroom_x, _subroom_y, 10, _world.seed) > 0.5 ? BIOME.CAVERNS : BIOME.LUSH_CAVES;
+}
