@@ -1,42 +1,5 @@
-
-/// @description This function gives the candidate room given by the standard world generation at a given subroom.
-/// @param {Struct.World} _world The world to use the seed of
-/// @param {Real} _subroom_x The x-coordinate to be covered by the candidate room
-/// @param {Real} _subroom_y The y-coordinate to be covered by the candidate room
-/// @return {Struct.Room}
-function world_get_candidate_room(_world, _subroom_x, _subroom_y) {
-	var _rect = get_rectangle(_subroom_x, _subroom_y, _world.seed);
-	var _room = new Room(_rect.x, _rect.y, _rect.w, _rect.h);
-	return _room;
-}
-
-/// @desc This function returns an array of candidate rooms that overlap the given array of rooms.
-/// @param {Struct.World} _world The world to use the seed of
-/// @param {Array<Struct.Room>} _rooms The group of rooms
-/// @return {Array<Struct.Room>}
-function world_get_overlapping_candidate_rooms(_world, _rooms) {
-	var _candidate_rooms = [];
-	for (var _i = 0; _i < array_length(_rooms); _i++) {
-		var _room = _rooms[_i];
-		for (var _x = _room.x; _x < _room.x + _room.width; _x++) {
-			for (var _y = _room.y; _y < _room.y + _room.height; _y++) {
-				var _candidate_to_add = world_get_candidate_room(_world, _x, _y);
-				var _added = false;
-				for (var _j = 0; _j < array_length(_candidate_rooms); _j++) {
-					var _candidate_to_check = _candidate_rooms[_j];
-					if (_candidate_to_add.x == _candidate_to_check.x 
-					 && _candidate_to_add.y == _candidate_to_check.y) {
-						_added = true;
-						break;
-					}
-				}
-				if (!_added) {
-					array_push(_candidate_rooms, _candidate_to_add);
-				}
-			}
-		}
-	}
-	return _candidate_rooms;
+function world_get_rectangle(_world, _subroom_x, _subroom_y) {
+	return get_rectangle(_subroom_x, _subroom_y, _world.seed);
 }
 
 function world_get_door_directions(_world, _subroom_x, _subroom_y) {
@@ -56,5 +19,5 @@ function world_get_door_directions(_world, _subroom_x, _subroom_y) {
 }
 
 function world_get_biome(_world, _subroom_x, _subroom_y) { // Placeholder
-	return perlin2D(_subroom_x, _subroom_y, 10, _world.seed) > 0.5 ? BIOME.CAVERNS : BIOME.LUSH_CAVES;
+	return perlin2D(_subroom_x, _subroom_y, 30, _world.seed) > 0.5 ? BIOME.CAVERNS : BIOME.LUSH_CAVES;
 }

@@ -21,7 +21,7 @@ function load_room(_world, _subroom_x, _subroom_y) {
 		for (var _y = _subroom_y - STRUCTURE_GENERATION_RADIUS; _y <= _subroom_y + STRUCTURE_GENERATION_RADIUS; _y++) {
 			if _x == 40 && _y == 20 {
 				if !world_room_exists(_world, _x, _y) && !disk_room_exists(_x, _y) {
-					disk_set_rooms(generate_structure(_world, _x, _y, STRUCTURE.STRONGHOLD));
+					disk_set_rooms(world_generate_structure(_world, _x, _y, STRUCTURE.STRONGHOLD));
 					show_debug_message("Structure generated");
 				}
 			}
@@ -35,7 +35,7 @@ function load_room(_world, _subroom_x, _subroom_y) {
 		return;
 	}
 	// Otherwise, generate the room
-	var _room = generate_room(_world, _subroom_x, _subroom_y);
+	var _room = world_generate_room(_world, _subroom_x, _subroom_y);
 	disk_set_room(_room);
 	world_set_room(_world, _room);
 	show_debug_message("Room loaded using standard room generation");

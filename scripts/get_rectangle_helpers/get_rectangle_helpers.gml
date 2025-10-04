@@ -100,19 +100,11 @@ function expand_lines(_line_cluster) {
 	}
 }
 
-function Rectangle(_x, _y, _w, _h) constructor {
-	x = _x;
-	y = _y;
-	w = _w;
-	h = _h;
-}
-
 function find_rectangle(_line_cluster, _x, _y) {
 	if pos_in_lines(_x, _y, _line_cluster.lines) {
 		_x++;
 		_y++;
 	}
-	
 	while !pos_in_lines(_x - 1, _y, _line_cluster.lines) _x--;
 	var _rect_x1 = _x - 1;
 	while !pos_in_lines(_x, _y - 1, _line_cluster.lines) _y--;
@@ -122,12 +114,5 @@ function find_rectangle(_line_cluster, _x, _y) {
 	while !pos_in_lines(_x, _y + 1, _line_cluster.lines) _y++;
 	var _rect_y2 = _y;
 	var _rectangle = new Rectangle(_rect_x1, _rect_y1, _rect_x2 - _rect_x1 + 1, _rect_y2 - _rect_y1 + 1);
-	return _rectangle;
-}
-
-function get_rectangle(_x, _y, _seed) {
-	var _line_cluster = get_line_cluster(_x, _y, _seed);
-	expand_lines(_line_cluster);
-	var _rectangle = find_rectangle(_line_cluster, _x, _y);
 	return _rectangle;
 }

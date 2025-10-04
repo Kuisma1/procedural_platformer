@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"get_rectangle",
+  "%Name":"world_generation",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"get_rectangle",
+  "name":"world_generation",
   "parent":{
-    "name":"Misc utils",
-    "path":"folders/Scripts/Misc utils.yy",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

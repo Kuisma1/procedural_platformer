@@ -22,11 +22,12 @@
     {"name":"obj_world","order":1,"path":"objects/obj_world/obj_world.yy",},
     {"name":"disk_utils","order":8,"path":"scripts/disk_utils/disk_utils.yy",},
     {"name":"enums","order":1,"path":"scripts/enums/enums.yy",},
-    {"name":"generation","order":9,"path":"scripts/generation/generation.yy",},
     {"name":"loading","order":10,"path":"scripts/loading/loading.yy",},
     {"name":"random_utils","order":1,"path":"scripts/random_utils/random_utils.yy",},
+    {"name":"rectangle_utils","order":12,"path":"scripts/rectangle_utils/rectangle_utils.yy",},
     {"name":"room_utils","order":3,"path":"scripts/room_utils/room_utils.yy",},
     {"name":"world_generation_utils","order":6,"path":"scripts/world_generation_utils/world_generation_utils.yy",},
+    {"name":"world_generation","order":9,"path":"scripts/world_generation/world_generation.yy",},
     {"name":"world_utils","order":5,"path":"scripts/world_utils/world_utils.yy",},
   ],
 }
