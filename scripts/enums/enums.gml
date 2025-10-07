@@ -5,5 +5,6 @@ enum BIOME {
 
 enum STRUCTURE {
 	NONE,
+	STARTING_ROOM,
 	STRONGHOLD
 }

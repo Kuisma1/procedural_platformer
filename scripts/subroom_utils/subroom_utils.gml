@@ -30,6 +30,7 @@ function subroom_get_buffer(_subroom) {
 }
 
 function subroom_get_from_buffer(_buffer) {
+	// Header
 	var _x = buffer_read(_buffer, buffer_s32);
 	var _y = buffer_read(_buffer, buffer_s32);
 	var _hidden = buffer_read(_buffer, buffer_bool);
