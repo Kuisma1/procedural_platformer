@@ -47,6 +47,7 @@
     {"id":{"name":"random_utils","path":"scripts/random_utils/random_utils.yy",},},
     {"id":{"name":"rectangle_utils","path":"scripts/rectangle_utils/rectangle_utils.yy",},},
     {"id":{"name":"room_utils","path":"scripts/room_utils/room_utils.yy",},},
+    {"id":{"name":"subroom_utils","path":"scripts/subroom_utils/subroom_utils.yy",},},
     {"id":{"name":"world_generation_utils","path":"scripts/world_generation_utils/world_generation_utils.yy",},},
     {"id":{"name":"world_generation","path":"scripts/world_generation/world_generation.yy",},},
     {"id":{"name":"world_utils","path":"scripts/world_utils/world_utils.yy",},},
