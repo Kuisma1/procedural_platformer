@@ -38,6 +38,8 @@
   "name":"procedural_platformer",
   "resources":[
     {"id":{"name":"obj_game","path":"objects/obj_game/obj_game.yy",},},
+    {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
+    {"id":{"name":"obj_tile","path":"objects/obj_tile/obj_tile.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"disk_utils","path":"scripts/disk_utils/disk_utils.yy",},},
     {"id":{"name":"enums","path":"scripts/enums/enums.yy",},},
@@ -51,6 +53,8 @@
     {"id":{"name":"world_generation_helpers","path":"scripts/world_generation_helpers/world_generation_helpers.yy",},},
     {"id":{"name":"world_generation","path":"scripts/world_generation/world_generation.yy",},},
     {"id":{"name":"world_utils","path":"scripts/world_utils/world_utils.yy",},},
+    {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
+    {"id":{"name":"spr_tile","path":"sprites/spr_tile/spr_tile.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
