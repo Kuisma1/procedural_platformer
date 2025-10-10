@@ -12,10 +12,12 @@ function world_generate_room(_world, _subroom_x, _subroom_y) {
 	var _height = _rect.height;
 	var _room = new Room(_x, _y, _width, _height, _biome, _structure);
 	// Initialize subrooms
-	for (var _room_subroom_x = _x; _room_subroom_x < _x + _width; _room_subroom_x++) {
-		for (var _room_subroom_y = _y; _room_subroom_y < _y + _height; _room_subroom_y++) {
-			var _subroom = new Subroom(_room_subroom_x, _room_subroom_y, false, false);
-			var _door_directions = world_get_door_directions(_world, _room_subroom_x, _room_subroom_y);
+	for (var _room_subroom_x = 0; _room_subroom_x < _width; _room_subroom_x++) {
+		for (var _room_subroom_y = 0; _room_subroom_y < _height; _room_subroom_y++) {
+			var _subroom = new Subroom(_x + _room_subroom_x, _y + _room_subroom_y, false, false);
+			// Get subroom doorway directions
+			var _door_directions = world_get_door_directions(_world, _x + _room_subroom_x, _y + _room_subroom_y);
+			// Initialize subroom tiles
 			var r = !_door_directions.right;
 			var l = !_door_directions.left;
 			var d = !_door_directions.down;
@@ -37,7 +39,21 @@ function world_generate_room(_world, _subroom_x, _subroom_y) {
 						  [1, 0, 0, 0, 0, 0, 0, 0, 1],
 						  [1, 1, 1, 1, 1, 1, r, r, 1]];
 			_subroom.tiles = _tiles;
-			_room.subrooms[_room_subroom_x - _x][_room_subroom_y - _y] = _subroom;
+			// Initialize subroom entrances and exits
+			if _door_directions.right && _room_subroom_x == _width - 1 {
+				_subroom.entrances.right = new Entrance(15, 7);
+				_subroom.exits.right = new Exit(15, 6, 1, 2, _x + _width, _y + _room_subroom_y);
+			} else if _door_directions.left && _room_subroom_x == 0 {
+				_subroom.entrances.left = new Entrance(0, 7);
+				_subroom.exits.left = new Exit(0, 6, 1, 2, _x - 1, _y + _room_subroom_y);
+			} else if _door_directions.down && _room_subroom_y == _height - 1 {
+				_subroom.entrances.down = new Entrance(7.5, 8);
+				_subroom.exits.down = new Exit(7, 8, 2, 1, _x + _room_subroom_x, _y + _height);
+			} else if _door_directions.up && _room_subroom_y == 0 {
+				_subroom.entrances.up = new Entrance(7.5, 0);
+				_subroom.exits.up = new Exit(7, 0, 2, 1, _x + _room_subroom_x, _y  - 1);
+			}
+			_room.subrooms[_room_subroom_x][_room_subroom_y] = _subroom;
 		}
 	}
 	return _room;
