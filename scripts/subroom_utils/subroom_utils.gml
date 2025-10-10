@@ -9,12 +9,20 @@ function Subroom(_x, _y, _hidden, _focus_view) constructor {
 	}
 }
 
-function subroom_get_buffer_size() {
-	return (2 + SUBROOM_WIDTH * SUBROOM_HEIGHT) * buffer_sizeof(buffer_s32) + 2 * buffer_sizeof(buffer_bool);
+function subroom_get_header_buffer_size(_subroom) {
+	return 2 * buffer_sizeof(buffer_s32) + 2 * buffer_sizeof(buffer_bool);
+}
+
+function subroom_get_tiles_buffer_size(_subroom) {
+	return SUBROOM_WIDTH * SUBROOM_HEIGHT * buffer_sizeof(buffer_s32);
+}
+
+function subroom_get_buffer_size(_subroom) {
+	return subroom_get_header_buffer_size(_subroom) + subroom_get_tiles_buffer_size(_subroom);
 }
 
 function subroom_get_buffer(_subroom) {
-	var _buffer = buffer_create(subroom_get_buffer_size(), buffer_fixed, 1);
+	var _buffer = buffer_create(subroom_get_buffer_size(_subroom), buffer_fixed, 1);
 	// Header
 	buffer_write(_buffer, buffer_s32, _subroom.x);
 	buffer_write(_buffer, buffer_s32, _subroom.y);
