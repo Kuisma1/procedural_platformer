@@ -7,8 +7,6 @@ function Subroom(_x, _y, _hidden, _focus_view) constructor {
 	for (var _tile_x = 0; _tile_x < SUBROOM_WIDTH; _tile_x++) {
 		tiles[_tile_x] = array_create(SUBROOM_HEIGHT)
 	}
-	entrances = {}; // map from direction or "other" to entrance struct
-	exits = {}; // map from direction or "other"
 }
 
 function subroom_get_header_buffer_size(_subroom) {
@@ -19,21 +17,8 @@ function subroom_get_tiles_buffer_size(_subroom) {
 	return SUBROOM_WIDTH * SUBROOM_HEIGHT * buffer_sizeof(buffer_s32);
 }
 
-function subroom_get_entrances_buffer_size(_subroom) {
-	var _entrance_count = array_length(struct_get_names(_subroom.entrances));
-	return 4 * buffer_sizeof(buffer_bool) + _entrance_count * entrance_get_buffer_size();
-}
-
-function subroom_get_exits_buffer_size(_subroom) {
-	var _exit_count = array_length(struct_get_names(_subroom.exits));
-	return 4 * buffer_sizeof(buffer_bool) + _exit_count * exit_get_buffer_size();
-}
-
 function subroom_get_buffer_size(_subroom) {
-	return subroom_get_header_buffer_size(_subroom)
-	     + subroom_get_tiles_buffer_size(_subroom) 
-		 + subroom_get_entrances_buffer_size(_subroom)
-		 + subroom_get_exits_buffer_size(_subroom);
+	return subroom_get_header_buffer_size(_subroom) + subroom_get_tiles_buffer_size(_subroom);
 }
 
 function subroom_get_buffer(_subroom) {
@@ -49,7 +34,6 @@ function subroom_get_buffer(_subroom) {
 			buffer_write(_buffer, buffer_s32, _subroom.tiles[_tile_x][_tile_y]);
 		}
 	}
-	
 	return _buffer;
 }
 
