@@ -39,7 +39,6 @@ function disk_set_room(_room) {
             buffer_delete(_buffer);
 		}
 	}
-	
 	// Save the actual room data into the chunk containing its origin
     var _origin_chunk_x = floor(_room.x / CHUNK_SIZE);
     var _origin_chunk_y = floor(_room.y / CHUNK_SIZE);
