@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"subroom_utils",
+  "%Name":"subroom_utilities",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"subroom_utils",
+  "name":"subroom_utilities",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

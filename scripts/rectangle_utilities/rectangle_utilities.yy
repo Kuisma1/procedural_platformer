@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"get_rectangle_helpers",
+  "%Name":"rectangle_utilities",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"get_rectangle_helpers",
+  "name":"rectangle_utilities",
   "parent":{
     "name":"rectangle_utils",
     "path":"folders/Scripts/rectangle_utils.yy",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"random_utils",
   "parent":{
-    "name":"Misc utils",
-    "path":"folders/Scripts/Misc utils.yy",
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

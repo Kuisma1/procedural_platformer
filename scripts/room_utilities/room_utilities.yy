@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"disk_utils",
+  "%Name":"room_utilities",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"disk_utils",
+  "name":"room_utilities",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

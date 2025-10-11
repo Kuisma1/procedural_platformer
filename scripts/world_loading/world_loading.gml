@@ -17,7 +17,6 @@ function world_load_room(_world, _subroom_x, _subroom_y) {
 		return;
 	}
 	/*
-	
 	// Generate all nearby ungenerated structures, save them onto disk
 	for (var _x = _subroom_x - STRUCTURE_GENERATION_RADIUS; _x <= _subroom_x + STRUCTURE_GENERATION_RADIUS; _x++) {
 		for (var _y = _subroom_y - STRUCTURE_GENERATION_RADIUS; _y <= _subroom_y + STRUCTURE_GENERATION_RADIUS; _y++) {
@@ -29,9 +28,6 @@ function world_load_room(_world, _subroom_x, _subroom_y) {
 			}
 		}
 	}
-	
-	*/
-	
 	// If the room now exists on disk, load it into memory
 	if disk_room_exists(_subroom_x, _subroom_y) {
 		var _room = disk_get_room(_subroom_x, _subroom_y);
@@ -39,6 +35,7 @@ function world_load_room(_world, _subroom_x, _subroom_y) {
 		show_debug_message("Room loaded from disk after generating structure");
 		return;
 	}
+	*/
 	// Otherwise, generate the room
 	var _room = world_generate_room(_world, _subroom_x, _subroom_y);
 	disk_set_room(_room);
