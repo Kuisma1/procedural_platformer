@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"random_utils",
+  "%Name":"random_utilities",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"random_utils",
+  "name":"random_utilities",
   "parent":{
     "name":"Other",
     "path":"folders/Scripts/Other.yy",
