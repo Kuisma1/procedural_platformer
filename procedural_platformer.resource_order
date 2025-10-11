@@ -10,7 +10,7 @@
     {"name":"Rooms","order":10,"path":"folders/Rooms.yy",},
     {"name":"Scripts","order":5,"path":"folders/Scripts.yy",},
     {"name":"Other","order":5,"path":"folders/Scripts/Other.yy",},
-    {"name":"rectangle_utils","order":7,"path":"folders/Scripts/rectangle_utils.yy",},
+    {"name":"rectangle_utilities","order":7,"path":"folders/Scripts/rectangle_utilities.yy",},
     {"name":"Sequences","order":11,"path":"folders/Sequences.yy",},
     {"name":"Shaders","order":6,"path":"folders/Shaders.yy",},
     {"name":"Sounds","order":3,"path":"folders/Sounds.yy",},

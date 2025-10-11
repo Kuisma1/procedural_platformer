@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"rectangle_utilities",
   "parent":{
-    "name":"rectangle_utils",
-    "path":"folders/Scripts/rectangle_utils.yy",
+    "name":"rectangle_utilities",
+    "path":"folders/Scripts/rectangle_utilities.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
