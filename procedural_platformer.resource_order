@@ -19,9 +19,7 @@
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings":[
-    {"name":"obj_game","order":1,"path":"objects/obj_game/obj_game.yy",},
-    {"name":"obj_player","order":3,"path":"objects/obj_player/obj_player.yy",},
-    {"name":"obj_tile","order":2,"path":"objects/obj_tile/obj_tile.yy",},
+    {"name":"obj_world","order":1,"path":"objects/obj_world/obj_world.yy",},
     {"name":"disk_utils","order":8,"path":"scripts/disk_utils/disk_utils.yy",},
     {"name":"enums","order":1,"path":"scripts/enums/enums.yy",},
     {"name":"loading","order":10,"path":"scripts/loading/loading.yy",},
