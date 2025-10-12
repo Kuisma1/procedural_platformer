@@ -1,1 +1,0 @@
-world = new World(0);

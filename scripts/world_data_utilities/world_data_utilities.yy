@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"world_data_utilities",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"world_data_utilities",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
