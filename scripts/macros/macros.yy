@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"macros",
   "parent":{
-    "name":"Macros & enums",
-    "path":"folders/Scripts/Macros & enums.yy",
+    "name":"Constants",
+    "path":"folders/Scripts/Constants.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

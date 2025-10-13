@@ -6,7 +6,7 @@
   "name":"rectangle_utilities",
   "parent":{
     "name":"rectangle_utilities",
-    "path":"folders/Scripts/Data/rectangle_utilities.yy",
+    "path":"folders/Scripts/World generation/Rectangle tiling/rectangle_utilities.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

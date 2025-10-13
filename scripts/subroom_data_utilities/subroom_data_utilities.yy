@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"subroom_data_utilities",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"subroom_data_utilities",
+  "parent":{
+    "name":"subroom_data",
+    "path":"folders/Scripts/Data/subroom_data.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

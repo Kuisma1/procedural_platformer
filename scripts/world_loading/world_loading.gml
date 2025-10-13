@@ -3,7 +3,7 @@
 /// @param {Real} _subroom_x The x-coordinate of the subroom to load the room of
 /// @param {Real} _subroom_y The y-coordinate of the subroom to load the room of
 /// @return {Undefined}
-function world_load_room(_world, _subroom_x, _subroom_y) {
+function world_load_room2(_world, _subroom_x, _subroom_y) {
 	// If the room already exists in memory, don't do anything
 	if world_room_exists(_world, _subroom_x, _subroom_y) {
 		show_debug_message("Room already in memory");
@@ -47,7 +47,7 @@ function world_load_room(_world, _subroom_x, _subroom_y) {
 /// @param {Struct.World} _world The world to unload the room in
 /// @param {Real} _subroom_x The x-coordinate of the subroom point to unload the room at
 /// @param {Real} _subroom_y The y-coordinate of the subroom point to unload the room at
-function world_unload_room(_world, _subroom_x, _subroom_y) {
+function world_unload_room2(_world, _subroom_x, _subroom_y) {
 	// If the room doesn't exist in memory, do nothing
 	if !world_room_exists(_world, _subroom_x, _subroom_y) {
 		show_debug_message("Room didn't exist in memory, nothing was unloaded");

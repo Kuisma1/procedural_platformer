@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"world_utilities",
   "parent":{
-    "name":"Data",
-    "path":"folders/Scripts/Data.yy",
+    "name":"ZZZ_old (being reworked)",
+    "path":"folders/Scripts/ZZZ_old (being reworked).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

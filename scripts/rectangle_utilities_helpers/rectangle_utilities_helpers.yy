@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"get_rectangle_helpers",
+  "%Name":"rectangle_utilities_helpers",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"get_rectangle_helpers",
+  "name":"rectangle_utilities_helpers",
   "parent":{
     "name":"rectangle_utilities",
-    "path":"folders/Scripts/Data/rectangle_utilities.yy",
+    "path":"folders/Scripts/World generation/Rectangle tiling/rectangle_utilities.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

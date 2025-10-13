@@ -15,9 +15,6 @@ function hash3(_a, _b, _c) {
     return _h;
 }
 
-/// @function hash_to_random01(h)
-/// @desc Maps a signed 32-bit integer hash to a float in [0,1).
-/// @param _h The signed 32-bit integer hash.
 function hash_to_random01(_h) {
     // Convert signed int to unsigned (wrap negatives into positive space)
     var _uh = _h & $FFFFFFFF; // mask to 32 bits
@@ -25,7 +22,6 @@ function hash_to_random01(_h) {
     return _uh / 4294967296.0; // 2^32
 }
 
-// 2D Simplex Noise in GML
 function perlin2D(_x, _y, _scale, _seed) {
 	_x = (_x+0.5)/_scale;
 	_y = (_y+0.5)/_scale;

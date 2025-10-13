@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"random_utilities",
+  "%Name":"game_data_utilities",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"random_utilities",
+  "name":"game_data_utilities",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"game_data",
+    "path":"folders/Scripts/Data/game_data.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

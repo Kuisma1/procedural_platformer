@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"random_utilities",
+  "%Name":"world",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"random_utilities",
+  "name":"world",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"World",
+    "path":"folders/Scripts/Objects/World.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

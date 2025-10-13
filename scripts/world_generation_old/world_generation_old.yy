@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"world_loading",
+  "%Name":"world_generation_old",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"world_loading",
+  "name":"world_generation_old",
   "parent":{
     "name":"ZZZ_old (being reworked)",
     "path":"folders/Scripts/ZZZ_old (being reworked).yy",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"world_generation",
   "parent":{
-    "name":"Data",
-    "path":"folders/Scripts/Data.yy",
+    "name":"World generation",
+    "path":"folders/Scripts/World generation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
