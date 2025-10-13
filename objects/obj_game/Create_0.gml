@@ -1,1 +1,0 @@
-state = game_main_menu();

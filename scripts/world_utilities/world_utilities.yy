@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"game_states",
+  "%Name":"world_utilities",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"game_states",
+  "name":"world_utilities",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",
