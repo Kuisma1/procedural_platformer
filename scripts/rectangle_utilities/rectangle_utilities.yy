@@ -6,7 +6,7 @@
   "name":"rectangle_utilities",
   "parent":{
     "name":"rectangle_utilities",
-    "path":"folders/Scripts/rectangle_utilities.yy",
+    "path":"folders/Scripts/Data/rectangle_utilities.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
