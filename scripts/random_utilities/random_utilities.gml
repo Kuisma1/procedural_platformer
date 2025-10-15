@@ -58,7 +58,6 @@ function fade(_t) {
 	return _t*_t*_t*(_t*(_t*6-15)+10)
 }
 
-// Pseudo-random gradient selection
 function random_gradient(_i, _j, _seed) {
 	//var _combined = (_i * 73856093) ^ (_j * 19349663) ^ _seed;
 	var _combined = hash3(_i, _j, _seed);
