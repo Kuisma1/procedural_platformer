@@ -1,3 +1,4 @@
 function Game() constructor {
-	// TODO?
+	settings = undefined;
+	world = undefined;
 }

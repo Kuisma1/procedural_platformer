@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"world",
+  "%Name":"world_object",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"world",
+  "name":"world_object",
   "parent":{
     "name":"World",
     "path":"folders/Scripts/Objects/World.yy",

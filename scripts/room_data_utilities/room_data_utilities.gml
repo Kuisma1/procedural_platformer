@@ -39,7 +39,7 @@ function room_data_get_buffer(_room_data) {
 	for (var _subroom_x = 0; _subroom_x < _room_data.width; _subroom_x++) {
 		for (var _subroom_y = 0; _subroom_y < _room_data.height; _subroom_y++) {
 			var _subroom_data = _room_data.subrooms[_subroom_x][_subroom_y];
-			var _subroom_buffer = subroom_get_buffer(_subroom_data);
+			var _subroom_buffer = subroom_data_get_buffer(_subroom_data);
 			var _subroom_buffer_size = buffer_get_size(_subroom_buffer);
 			buffer_write(_buffer, buffer_s32, _subroom_buffer_size);
 			buffer_copy(_subroom_buffer, 0, _subroom_buffer_size, _buffer, buffer_tell(_buffer));

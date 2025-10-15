@@ -6,11 +6,11 @@ function world_generation_generate_room(_world_data, _subroom_x, _subroom_y) {
 	var _y = _rect.y;
 	var _width = _rect.width;
 	var _height = _rect.height;
-	var _room_data = new Room(_x, _y, _width, _height, _biome, _structure);
+	var _room_data = new RoomData(_x, _y, _width, _height, _biome, _structure);
 	// Initialize subrooms
 	for (var _room_subroom_x = _x; _room_subroom_x < _x + _width; _room_subroom_x++) {
 		for (var _room_subroom_y = _y; _room_subroom_y < _y + _height; _room_subroom_y++) {
-			var _subroom_data = new Subroom(_room_subroom_x, _room_subroom_y, false, false);
+			var _subroom_data = new SubroomData(_room_subroom_x, _room_subroom_y, false, false);
 			var _doorways = world_generation_get_doorways(_world_data, _room_subroom_x, _room_subroom_y);
 			var r = !_doorways.right;
 			var l = !_doorways.left;
