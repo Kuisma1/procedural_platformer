@@ -15,7 +15,7 @@ function world_data_room_exists_on_disk(_world_data, _subroom_x, _subroom_y) {
     var _chunk_x = floor(_subroom_x / CHUNK_SIZE);
     var _chunk_y = floor(_subroom_y / CHUNK_SIZE);
     var _chunk_key  = string(_chunk_x) + "_" + string(_chunk_y);
-    var _chunk_filepath = "world_" + string(_world_data.id) + "/chunks/chunk_" + _chunk_key;
+    var _chunk_filepath = _world_data.id + "/chunks/chunk_" + _chunk_key;
     var _rooms_bounds_filepath = _chunk_filepath + "/rooms.bounds";
 
     // --- Step 2: if no bounds file, no rooms ---
@@ -57,7 +57,7 @@ function world_data_get_room_from_disk(_world_data, _subroom_x, _subroom_y) {
     var _chunk_x = floor(_subroom_x / CHUNK_SIZE);
     var _chunk_y = floor(_subroom_y / CHUNK_SIZE);
     var _chunk_key  = string(_chunk_x) + "_" + string(_chunk_y);
-    var _chunk_filepath = "world_" + string(_world_data.id) + "/chunks/chunk_" + _chunk_key;
+    var _chunk_filepath = _world_data.id + "/chunks/chunk_" + _chunk_key;
     var _rooms_bounds_filepath = _chunk_filepath + "/rooms.bounds";
 	
 	// --- Step 2: if no bounds file, no rooms here ---
@@ -102,7 +102,7 @@ function world_data_get_room_from_disk(_world_data, _subroom_x, _subroom_y) {
     var _origin_chunk_x = floor(_room_found_x / CHUNK_SIZE);
     var _origin_chunk_y = floor(_room_found_y / CHUNK_SIZE);
     var _origin_chunk_key = string(_origin_chunk_x) + "_" + string(_origin_chunk_y);
-    var _origin_chunk_filepath = "world_" + string(_world_data.id) + "/chunks/chunk_" + _origin_chunk_key;
+    var _origin_chunk_filepath = _world_data.id + "/chunks/chunk_" + _origin_chunk_key;
     var _rooms_filepath  = _origin_chunk_filepath + "/rooms";
 	
 	var _room_key  = string(_room_found_x) + "_" + string(_room_found_y);
@@ -149,7 +149,7 @@ function world_data_set_room_to_disk(_world_data, _room_data) {
 	for (var _chunk_x = _chunk_x_min; _chunk_x <= _chunk_x_max; _chunk_x++) {
 		for (var _chunk_y = _chunk_y_min; _chunk_y <= _chunk_y_max; _chunk_y++) {
 			var _chunk_key  = string(_chunk_x) + "_" + string(_chunk_y);
-            var _chunk_filepath = "world_" + string(_world_data.id) + "/chunks/chunk_" + _chunk_key;
+            var _chunk_filepath = _world_data.id + "/chunks/chunk_" + _chunk_key;
             var _rooms_bounds_filepath = _chunk_filepath + "/rooms.bounds";
 			
 			// Ensure chunk directory exists
@@ -181,7 +181,7 @@ function world_data_set_room_to_disk(_world_data, _room_data) {
     var _origin_chunk_x = floor(_room_data.x / CHUNK_SIZE);
     var _origin_chunk_y = floor(_room_data.y / CHUNK_SIZE);
     var _origin_chunk_key = string(_origin_chunk_x) + "_" + string(_origin_chunk_y);
-    var _origin_chunk_filepath = "world_" + string(_world_data.id) + "/chunks/chunk_" + _origin_chunk_key;
+    var _origin_chunk_filepath = _world_data.id + "/chunks/chunk_" + _origin_chunk_key;
     var _rooms_filepath = _origin_chunk_filepath + "/rooms";
 
     // Ensure rooms/ subdirectory exists
@@ -217,7 +217,7 @@ function world_data_remove_room(_world_data, _subroom_x, _subroom_y) {
 }
 
 function world_data_clear_disk(_world_data) {
-    var _chunks_filepath = "world_" + string(_world_data.id) + "/chunks";
+    var _chunks_filepath = _world_data.id + "/chunks";
 
     // Delete the whole chunks directory if it exists
     if directory_exists(_chunks_filepath) {

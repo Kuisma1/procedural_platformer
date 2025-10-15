@@ -1,4 +1,4 @@
-data = new WorldData(, 111);
+data = new WorldData("test_world", 111);
 
 world_data_clear_disk(data);
 
