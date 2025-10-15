@@ -26,3 +26,10 @@ function world_unload_room(_world, _subroom_x, _subroom_y) {
 		show_debug_message("- Room unloaded");
 	}
 }
+
+function world_save(_world) {
+	var _world_data = _world.data;
+	world_data_set_rooms_to_disk(_world_data, world_data_get_rooms(_world_data));
+	// Save worldwide info
+	// Save player info
+}
