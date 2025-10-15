@@ -15,7 +15,6 @@
     {"name":"subroom_data","order":4,"path":"folders/Scripts/Data/subroom_data.yy",},
     {"name":"world_data","order":5,"path":"folders/Scripts/Data/world_data.yy",},
     {"name":"Objects","order":6,"path":"folders/Scripts/Objects.yy",},
-    {"name":"game_object","order":3,"path":"folders/Scripts/Objects/game_object.yy",},
     {"name":"world_object","order":2,"path":"folders/Scripts/Objects/world_object.yy",},
     {"name":"World generation","order":4,"path":"folders/Scripts/World generation.yy",},
     {"name":"Rectangle tiling","order":1,"path":"folders/Scripts/World generation/Rectangle tiling.yy",},
@@ -29,7 +28,6 @@
   ],
   "ResourceOrderSettings":[
     {"name":"obj_game","order":2,"path":"objects/obj_game/obj_game.yy",},
-    {"name":"obj_player","order":6,"path":"objects/obj_player/obj_player.yy",},
     {"name":"obj_room","order":4,"path":"objects/obj_room/obj_room.yy",},
     {"name":"obj_subroom","order":7,"path":"objects/obj_subroom/obj_subroom.yy",},
     {"name":"obj_tile","order":5,"path":"objects/obj_tile/obj_tile.yy",},

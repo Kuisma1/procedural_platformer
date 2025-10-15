@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"game_object",
+  "%Name":"game_data",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"game_object",
+  "name":"game_data",
   "parent":{
-    "name":"game_object",
-    "path":"folders/Scripts/Objects/game_object.yy",
+    "name":"game_data",
+    "path":"folders/Scripts/Data/game_data.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
