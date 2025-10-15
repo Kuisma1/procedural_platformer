@@ -203,6 +203,14 @@ function world_data_set_rooms_to_disk(_world_data, _rooms_data) {
 	}
 }
 
+function world_data_set_seed_to_disk(_world_data) {
+	var _seed = _world_data.seed;
+	var _buffer = buffer_create(buffer_sizeof(buffer_s32), buffer_fixed, 1);
+	buffer_write(_buffer, buffer_s32, _seed);
+	buffer_save(_buffer, _world_data.id + "/seed.bin");
+	buffer_delete(_buffer);
+}
+
 
 function world_data_remove_room(_world_data, _subroom_x, _subroom_y) {
 	if !world_data_room_exists(_world_data, _subroom_x, _subroom_y) return;
