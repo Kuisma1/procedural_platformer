@@ -1,4 +1,4 @@
-function world_load_room(_world, _subroom_x, _subroom_y) {
+function world_load_room2(_world, _subroom_x, _subroom_y) {
 	show_debug_message("Attempting to load room");
 	var _world_data = _world.data;
 	if world_data_room_exists(_world_data, _subroom_x, _subroom_y) {
@@ -15,7 +15,7 @@ function world_load_room(_world, _subroom_x, _subroom_y) {
 	}
 }
 
-function world_unload_room(_world, _subroom_x, _subroom_y) {
+function world_unload_room2(_world, _subroom_x, _subroom_y) {
 	show_debug_message("Attempting to unload room");
 	var _world_data = _world.data;
 	if !world_data_room_exists(_world_data, _subroom_x, _subroom_y) {
