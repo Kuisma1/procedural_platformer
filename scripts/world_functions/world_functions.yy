@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"world_functions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"world_functions",
+  "parent":{
+    "name":"world_object",
+    "path":"folders/Scripts/Objects/world_object.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

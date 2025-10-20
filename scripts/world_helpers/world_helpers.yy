@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"game_object",
+  "%Name":"world_helpers",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"game_object",
+  "name":"world_helpers",
   "parent":{
-    "name":"game",
-    "path":"folders/Scripts/Objects/game.yy",
+    "name":"world_object",
+    "path":"folders/Scripts/Objects/world_object.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

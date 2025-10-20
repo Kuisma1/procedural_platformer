@@ -1,2 +1,4 @@
-data = new WorldData("test_world", 0);
-current_room = noone;
+seed = 0;
+rooms = {};
+instantiated_room = noone;
+filepath = "world/placeholder_world";

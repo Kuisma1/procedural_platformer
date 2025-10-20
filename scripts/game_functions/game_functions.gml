@@ -35,6 +35,8 @@ function game_load_world(_game, _id) {
 		var _world = instance_create_layer(0, 0, "World", obj_world);
 		_world.seed = _seed;
 		_world.rooms = {};
+		_world.instantiated_room = noone;
+		_world.filepath = _world_filepath;
 		_game.world = _world;
 		// Load and instantiate first room
 		// -- TODO --
