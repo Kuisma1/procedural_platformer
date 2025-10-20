@@ -1,2 +1,1 @@
-data = new GameData();
-current_world = noone;
+show_debug_message("TEST STARTS HERE ------------------------------------------");

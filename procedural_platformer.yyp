@@ -26,7 +26,7 @@
     {"$GMFolder":"","%Name":"subroom_data","folderPath":"folders/Scripts/Data/subroom_data.yy","name":"subroom_data","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"world_data","folderPath":"folders/Scripts/Data/world_data.yy","name":"world_data","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Scripts/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"game_object","folderPath":"folders/Scripts/Objects/game_object.yy","name":"game_object","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"game","folderPath":"folders/Scripts/Objects/game.yy","name":"game","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"world_object","folderPath":"folders/Scripts/Objects/world_object.yy","name":"world_object","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"World generation","folderPath":"folders/Scripts/World generation.yy","name":"World generation","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Rectangle tiling","folderPath":"folders/Scripts/World generation/Rectangle tiling.yy","name":"Rectangle tiling","resourceType":"GMFolder","resourceVersion":"2.0",},

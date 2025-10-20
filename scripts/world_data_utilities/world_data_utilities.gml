@@ -225,10 +225,10 @@ function world_data_remove_room(_world_data, _subroom_x, _subroom_y) {
 }
 
 function world_data_clear_disk(_world_data) {
-    var _chunks_filepath = _world_data.id + "/chunks";
+    var _world_filepath = _world_data.id;
 
     // Delete the whole chunks directory if it exists
-    if directory_exists(_chunks_filepath) {
-        directory_destroy(_chunks_filepath);
+    if directory_exists(_world_filepath) {
+        directory_destroy(_world_filepath);
     }
 }

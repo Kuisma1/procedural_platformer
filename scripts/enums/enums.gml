@@ -1,3 +1,9 @@
+enum GAME_STATE {
+	NONE,
+	MAIN_MENU,
+	GAMEPLAY
+}
+
 enum BIOME {
 	NONE,
 	CAVERNS,
