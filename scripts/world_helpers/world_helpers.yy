@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"world_helpers",
   "parent":{
-    "name":"world_object",
-    "path":"folders/Scripts/Objects/world_object.yy",
+    "name":"world",
+    "path":"folders/Scripts/Objects/world.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

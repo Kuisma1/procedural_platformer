@@ -3,6 +3,14 @@ function world_load_room(_world, _subroom_x, _subroom_y) {
 	// 2. if room exists on disk, load it
 	// (2.5. generate nearby ungenerated structures, and check existence on disk again)
 	// 3. otherwise generate the room, save it to disk and load it
+	if world_room_exists(_world, _subroom_x, _subroom_y) {
+		show_debug_message("Room at " + string(_subroom_x) + "," + string(_subroom_y) + " was already loaded.");
+	} else if world_room_exists_on_disk(_world, _subroom_x, _subroom_y) {
+		var _room = world_get_room_from_disk(_world, _subroom_x, _subroom_y);
+		world_set_room(_world, _room);
+	} else {
+		// TODO: redo world_generation to handle world object instead of world_data
+	}
 }
 
 function world_instantiate_room(_world, _subroom_x, _subroom_y) {
