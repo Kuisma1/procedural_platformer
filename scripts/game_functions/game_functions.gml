@@ -38,7 +38,7 @@ function game_load_world(_game, _id) {
 		_world.instantiated_room = noone;
 		_world.filepath = _world_filepath;
 		
-		// Load and instantiate first room
+		// Load and instantiate first room?
 		// -- TODO --
 		
 		_game.world = _world;
