@@ -52,7 +52,7 @@ function room_data_get_buffer(_room_data) {
 
 /// @desc This function returns the room of the given buffer of a room.
 /// @param {Id.Buffer} _buffer The buffer to return the room for
-/// @return {Struct.Room}
+/// @return {Struct.RoomData}
 function room_data_get_from_buffer(_buffer) {
 	buffer_seek(_buffer, buffer_seek_start, 0);
 	//Header
@@ -78,7 +78,7 @@ function room_data_get_from_buffer(_buffer) {
 			_subrooms[_subroom_x][_subroom_y] = _subroom_data;
 		}
 	}
-	var _room = new Room(_x, _y, _w, _h, _biome, _structure);
+	var _room = new RoomData(_x, _y, _w, _h, _biome, _structure);
 	_room.subrooms = _subrooms;
 	return _room;
 }

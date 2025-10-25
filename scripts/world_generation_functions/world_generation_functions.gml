@@ -1,6 +1,6 @@
-function world_generation_generate_room(_world_data, _subroom_x, _subroom_y) {
-	var _rect = rectangle_tiling_get_rectangle(_subroom_x, _subroom_y, _world_data.seed);
-	var _biome = world_generation_get_biome(_world_data, _rect.x + floor(_rect.width / 2), _rect.y + floor(_rect.height / 2));
+function world_generation_generate_room(_world, _subroom_x, _subroom_y) {
+	var _rect = rectangle_tiling_get_rectangle(_subroom_x, _subroom_y, _world.seed);
+	var _biome = world_generation_get_biome(_world, _rect.x + floor(_rect.width / 2), _rect.y + floor(_rect.height / 2));
 	var _structure = STRUCTURE.NONE;
 	var _x = _rect.x;
 	var _y = _rect.y;
@@ -11,7 +11,7 @@ function world_generation_generate_room(_world_data, _subroom_x, _subroom_y) {
 	for (var _room_subroom_x = _x; _room_subroom_x < _x + _width; _room_subroom_x++) {
 		for (var _room_subroom_y = _y; _room_subroom_y < _y + _height; _room_subroom_y++) {
 			var _subroom_data = new SubroomData(_room_subroom_x, _room_subroom_y, false, false);
-			var _doorways = world_generation_get_doorways(_world_data, _room_subroom_x, _room_subroom_y);
+			var _doorways = world_generation_get_doorways(_world, _room_subroom_x, _room_subroom_y);
 			var r = !_doorways.right;
 			var l = !_doorways.left;
 			var d = !_doorways.down;

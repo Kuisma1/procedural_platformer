@@ -5,5 +5,3 @@
 #macro SUBROOM_HEIGHT 9
 
 #macro TILE_SIZE 64
-
-#macro SUBROOM_SIZE 16

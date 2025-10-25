@@ -43,7 +43,7 @@ function subroom_data_get_from_buffer(_buffer) {
 	var _y = buffer_read(_buffer, buffer_s32);
 	var _hidden = buffer_read(_buffer, buffer_bool);
 	var _focus_view = buffer_read(_buffer, buffer_bool);
-	var _subroom_data = new Subroom(_x, _y, _hidden, _focus_view);
+	var _subroom_data = new SubroomData(_x, _y, _hidden, _focus_view);
 	// Tiles
 	for (var _tile_x = 0; _tile_x < SUBROOM_WIDTH; _tile_x++) {
 		for (var _tile_y = 0; _tile_y < SUBROOM_HEIGHT; _tile_y++) {

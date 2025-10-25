@@ -26,7 +26,7 @@ function game_delete_world(_id) {
 
 function game_load_world(_game, _id) {
 	var _world_filepath = "worlds/" + _id;
-	if !directory_exists(_world_filepath) {
+	if directory_exists(_world_filepath) {
 		// Initialize world data
 		var _seed_filepath = + _world_filepath + "/seed.bin";
 		var _seed_buffer = buffer_load(_seed_filepath);
@@ -37,9 +37,12 @@ function game_load_world(_game, _id) {
 		_world.rooms = {};
 		_world.instantiated_room = noone;
 		_world.filepath = _world_filepath;
-		_game.world = _world;
+		
 		// Load and instantiate first room
 		// -- TODO --
+		
+		_game.world = _world;
+		
 		show_debug_message("World with id: " + _id + " loaded successfully.");
 	} else {
 		show_debug_message("World with id: " + _id + " doesn't exist.");

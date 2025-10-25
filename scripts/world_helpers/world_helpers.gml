@@ -8,6 +8,10 @@ function world_get_room(_world, _subroom_x, _subroom_y) {
 	return struct_get(_world.rooms, _subroom_key);
 }
 
+function world_get_rooms(_world) {
+	return _world.rooms_list;
+}
+
 function world_set_room(_world, _room_data) {
 	for (var _x = _room_data.x; _x < _room_data.x + _room_data.width; _x++) {
 		for (var _y = _room_data.y; _y < _room_data.y + _room_data.height; _y++) {
@@ -15,6 +19,19 @@ function world_set_room(_world, _room_data) {
 			_world.rooms[$ _subroom_key] = _room_data;
 		}
 	}
+	array_push(_world.rooms_list, _room_data);
+}
+
+function world_remove_room(_world, _subroom_x, _subroom_y) {
+	if !world_room_exists(_world, _subroom_x, _subroom_y) return;
+	var _room_data = world_get_room(_world, _subroom_x, _subroom_y);
+	for (var _x = _room_data.x; _x < _room_data.x + _room_data.width; _x++) {
+		for (var _y = _room_data.y; _y < _room_data.y + _room_data.height; _y++) {
+			var _subroom_key = string(_x) + "_" + string(_y);
+			struct_remove(_world.rooms, _subroom_key);
+		}
+	}
+	array_delete(_world.rooms_list, array_get_index(_world.rooms_list, _room_data), 1);
 }
 
 function world_room_exists_on_disk(_world, _subroom_x, _subroom_y) {
