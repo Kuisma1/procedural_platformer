@@ -1,2 +1,3 @@
-data = new SubroomData(0, 0, 0, 0);
+data = {};
 tiles = [];
+room_ = noone;

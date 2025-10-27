@@ -33,10 +33,10 @@ function game_load_world(_game, _id) {
 		var _seed = buffer_read(_seed_buffer, buffer_s32);
 		buffer_delete(_seed_buffer);
 		var _world = instance_create_layer(0, 0, "World", obj_world);
-		_world.seed = _seed;
-		_world.rooms = {};
-		_world.instantiated_room = noone;
-		_world.filepath = _world_filepath;
+		seed = _seed;
+		rooms = {};
+		instantiated_room = noone;
+		filepath = _world_filepath;
 		
 		// Load and instantiate first room?
 		// -- TODO --
@@ -50,11 +50,13 @@ function game_load_world(_game, _id) {
 }
 
 function game_save_world(_game) {
-	// save loaded rooms, the player and world metadata to disk
-	// -- TODO --
+	world_save_rooms(_game.world);
+	show_debug_message("Current world saved.");
 }
 
 function game_unload_world(_game) {
-	// Save the world and then remove it from memory
-	// -- TODO --
+	game_save_world(_game);
+	instance_destroy(_game.world);
+	_game.world = noone;
+	show_debug_message("Current world unloaded");
 }
