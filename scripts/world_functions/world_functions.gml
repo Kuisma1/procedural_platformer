@@ -12,6 +12,7 @@ function world_load_room(_world, _subroom_x, _subroom_y) {
 	} else {
 		// TODO: redo world_generation to handle world object instead of world_data
 		var _room = world_generation_generate_room(_world, _subroom_x, _subroom_y);
+		world_set_room_to_disk(_world, _room);
 		world_set_room(_world, _room);
 		show_debug_message("Room at " + string(_subroom_x) + "," + string(_subroom_y) + " generated, saved to disk and loaded.");
 	}
@@ -45,16 +46,16 @@ function world_instantiate_room(_world, _subroom_x, _subroom_y) {
 	}
 	_room.world = _world;
 	_world.instantiated_room = _room;
+	show_debug_message("Room at " + string(_subroom_x) + "," + string(_subroom_y) + " was instantiated.");
 }
 
 function world_uninstantiate_room(_world) {
 	instance_destroy(_world.instantiated_room);
-	instantiated_room = noone;
+	_world.instantiated_room = noone;
+	show_debug_message("Current room was uninstantiated.");
 }
 
 function world_unload_room(_world, _subroom_x, _subroom_y) {
-	// 1. save room to disk
-	// 2. remove room from memory
 	if !world_room_exists(_world, _subroom_x, _subroom_y) {
 		show_debug_message("Tried to unload room at " + string(_subroom_x) + "," + string(_subroom_y) + " but it was not loaded.");
 	} else {

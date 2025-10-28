@@ -1,8 +1,8 @@
+seed = 0;
 rooms = {};
+filepath = "worlds/_";
+
 rooms_list = [];
 instantiated_room = noone;
-
-seed = 0;
-filepath = "worlds/placeholder_world";
 
 game = noone;
