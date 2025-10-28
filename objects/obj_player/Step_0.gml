@@ -8,6 +8,3 @@ v_speed = move_speed * (_down - _up);
 
 x += h_speed;
 y += v_speed;
-
-x = clamp(x, 32, room_width - 32);
-y = clamp(y, 32, room_height - 32);

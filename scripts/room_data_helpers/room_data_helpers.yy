@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"room_data_utilities",
+  "%Name":"room_data_helpers",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"room_data_utilities",
+  "name":"room_data_helpers",
   "parent":{
     "name":"room_data",
     "path":"folders/Scripts/Data/room_data.yy",
