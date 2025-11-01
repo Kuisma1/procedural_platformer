@@ -24,25 +24,15 @@ function world_instantiate_room(_world, _subroom_x, _subroom_y) {
 	room_height = _room_data.height * SUBROOM_HEIGHT * TILE_SIZE;
 	var _room = instance_create_layer(0, 0, "Room", obj_room);
 	_room.data = _room_data;
-	for (var _sx = 0; _sx < _room_data.width; _sx++) {
-		for (var _sy = 0; _sy < _room_data.height; _sy++) {
-			var _subroom_data = _room_data.subrooms[_sx][_sy];
-			var _subroom = instance_create_layer(_sx * SUBROOM_WIDTH * TILE_SIZE,
-												 _sy * SUBROOM_HEIGHT * TILE_SIZE,
-												 "Subrooms", obj_subroom);
-			_subroom.data = _subroom_data;
-			for (var _tx = 0; _tx < SUBROOM_WIDTH; _tx++) {
-				for (var _ty = 0; _ty < SUBROOM_HEIGHT; _ty++) {
-					if _subroom_data.tiles[_tx][_ty] == 1 {
-						var _tile = instance_create_layer((_sx * SUBROOM_WIDTH + _tx) * TILE_SIZE,
-														  (_sy * SUBROOM_HEIGHT + _ty) * TILE_SIZE,
-													      "Tiles", obj_tile);
-						array_push(_subroom.tiles, _tile);
-					}
-				}
+	for (var _tile_x = 0; _tile_x < SUBROOM_WIDTH * _room_data.width; _tile_x++) {
+		for (var _tile_y = 0; _tile_y < SUBROOM_HEIGHT * _room_data.height; _tile_y++) {
+			if _room_data.tiles[_tile_x][_tile_y] == 1 {
+				var _tile = instance_create_layer(TILE_SIZE * _tile_x,
+												  TILE_SIZE * _tile_y,
+												  "Tiles",
+												  obj_tile);
+				array_push(_room.tiles, _tile);
 			}
-			_subroom.room_ = _room;
-			_room.subrooms[_sx][_sy] = _subroom;
 		}
 	}
 	var _player_x = (_subroom_x - _room_data.x) * SUBROOM_WIDTH * TILE_SIZE + SUBROOM_WIDTH / 2 * TILE_SIZE;

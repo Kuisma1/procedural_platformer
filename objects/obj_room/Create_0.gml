@@ -1,5 +1,5 @@
 data = {};
-subrooms = [[]];
+tiles = [];
 entities = [];
 
 world = noone;

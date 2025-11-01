@@ -1,29 +1,23 @@
-function RoomData(_x, _y, _width, _height, _biome, _structure) : Rectangle(_x, _y, _width, _height) constructor {
+function RoomData(_x, _y, _width, _height, _biome, _structure, _tiles) : Rectangle(_x, _y, _width, _height) constructor {
 	x = _x;
 	y = _y;
 	width = _width;
 	height = _height;
 	biome = _biome;
 	structure = _structure;
-	subrooms = array_create(_width);
-	for (var _subroom_x = 0; _subroom_x < _width; _subroom_x++) {
-		subrooms[_subroom_x] = array_create(_height);
-	}
+	tiles = _tiles;
 }
 
 function room_data_get_buffer_header_size(_room_data) {
 	return 6 * buffer_sizeof(buffer_s32);
 }
 
+function room_data_get_buffer_tiles_size(_room_data) {
+	return buffer_sizeof(buffer_s32) * (SUBROOM_WIDTH * _room_data.width * SUBROOM_HEIGHT * _room_data.height);
+}
+
 function room_data_get_buffer_size(_room_data) {
-	var _size = room_data_get_buffer_header_size(_room_data);
-	for (var _subroom_x = 0; _subroom_x < _room_data.width; _subroom_x++) {
-		for (var _subroom_y = 0; _subroom_y < _room_data.height; _subroom_y++) {
-			var _subroom_data = _room_data.subrooms[_subroom_x][_subroom_y];
-			_size += buffer_sizeof(buffer_s32) + subroom_data_get_buffer_size(_subroom_data);
-		}
-	}
-	return _size;
+	return room_data_get_buffer_header_size(_room_data) + room_data_get_buffer_tiles_size(_room_data);
 }
 
 function room_data_get_buffer(_room_data) {
@@ -36,15 +30,10 @@ function room_data_get_buffer(_room_data) {
 	buffer_write(_buffer, buffer_s32, _room_data.biome);
 	buffer_write(_buffer, buffer_s32, _room_data.structure);
 	// Subrooms
-	for (var _subroom_x = 0; _subroom_x < _room_data.width; _subroom_x++) {
-		for (var _subroom_y = 0; _subroom_y < _room_data.height; _subroom_y++) {
-			var _subroom_data = _room_data.subrooms[_subroom_x][_subroom_y];
-			var _subroom_buffer = subroom_data_get_buffer(_subroom_data);
-			var _subroom_buffer_size = buffer_get_size(_subroom_buffer);
-			buffer_write(_buffer, buffer_s32, _subroom_buffer_size);
-			buffer_copy(_subroom_buffer, 0, _subroom_buffer_size, _buffer, buffer_tell(_buffer));
-			buffer_seek(_buffer, buffer_seek_relative, _subroom_buffer_size);
-			buffer_delete(_subroom_buffer);
+	for (var _tile_x = 0; _tile_x < SUBROOM_WIDTH * _room_data.width; _tile_x++) {
+		for (var _tile_y = 0; _tile_y < SUBROOM_HEIGHT * _room_data.height; _tile_y++) {
+			var _tile = _room_data.tiles[_tile_x][_tile_y];
+			buffer_write(_buffer, buffer_s32, _tile);
 		}
 	}
 	return _buffer;
@@ -62,23 +51,14 @@ function room_data_get_from_buffer(_buffer) {
 	var _h = buffer_read(_buffer, buffer_s32);
 	var _biome = buffer_read(_buffer, buffer_s32);
 	var _structure = buffer_read(_buffer, buffer_s32);
-	//Subrooms
-	var _subrooms = array_create(_w);
-	for (var _subroom_x = 0; _subroom_x < _w; _subroom_x++) {
-	    _subrooms[_subroom_x] = array_create(_h);
-	}
-	for (var _subroom_x = 0; _subroom_x < _w; _subroom_x++) {
-		for (var _subroom_y = 0; _subroom_y < _h; _subroom_y++) {
-			var _subroom_buffer_size = buffer_read(_buffer, buffer_s32);
-			var _subroom_buffer = buffer_create(_subroom_buffer_size, buffer_fixed, 1);
-			buffer_copy(_buffer, buffer_tell(_buffer), _subroom_buffer_size, _subroom_buffer, 0);
-			buffer_seek(_buffer, buffer_seek_relative, _subroom_buffer_size);
-			var _subroom_data = subroom_data_get_from_buffer(_subroom_buffer);
-			buffer_delete(_subroom_buffer);
-			_subrooms[_subroom_x][_subroom_y] = _subroom_data;
+	var _tiles = [];
+	
+	for (var _tile_x = 0; _tile_x < SUBROOM_WIDTH * _w; _tile_x++) {
+		for (var _tile_y = 0; _tile_y < SUBROOM_HEIGHT * _h; _tile_y++) {
+			var _tile = buffer_read(_buffer, buffer_s32);
+			_tiles[_tile_x][_tile_y] = _tile;
 		}
 	}
-	var _room = new RoomData(_x, _y, _w, _h, _biome, _structure);
-	_room.subrooms = _subrooms;
+	var _room = new RoomData(_x, _y, _w, _h, _biome, _structure, _tiles);
 	return _room;
 }
