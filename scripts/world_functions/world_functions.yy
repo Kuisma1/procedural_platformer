@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"enums",
+  "%Name":"world_functions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"enums",
+  "name":"world_functions",
   "parent":{
-    "name":"Constants",
-    "path":"folders/Scripts/Constants.yy",
+    "name":"world",
+    "path":"folders/Scripts/Objects/world.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

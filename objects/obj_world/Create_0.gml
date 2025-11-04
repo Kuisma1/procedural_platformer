@@ -1,3 +1,8 @@
-#macro SUBROOM_PIXEL_SIZE 32
+seed = 0;
+rooms = {};
+filepath = "worlds/_";
 
-world = new World(0);
+rooms_list = [];
+instantiated_room = noone;
+
+game = noone;

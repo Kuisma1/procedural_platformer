@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"enums",
+  "%Name":"random_utilities",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"enums",
+  "name":"random_utilities",
   "parent":{
-    "name":"Constants",
-    "path":"folders/Scripts/Constants.yy",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

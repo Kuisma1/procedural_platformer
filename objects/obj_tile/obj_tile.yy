@@ -1,12 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_world",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_tile",
+  "eventList":[],
   "managed":true,
-  "name":"obj_world",
+  "name":"obj_tile",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -30,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_tile",
+    "path":"sprites/spr_tile/spr_tile.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

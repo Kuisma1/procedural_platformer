@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"enums",
+  "%Name":"entrance_data_helpers",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"enums",
+  "name":"entrance_data_helpers",
   "parent":{
-    "name":"Constants",
-    "path":"folders/Scripts/Constants.yy",
+    "name":"room_data",
+    "path":"folders/Scripts/Data/room_data.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
