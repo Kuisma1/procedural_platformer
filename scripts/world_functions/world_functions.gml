@@ -27,16 +27,13 @@ function world_instantiate_room(_world, _subroom_x, _subroom_y) {
 	for (var _tile_x = 0; _tile_x < SUBROOM_WIDTH * _room_data.width; _tile_x++) {
 		for (var _tile_y = 0; _tile_y < SUBROOM_HEIGHT * _room_data.height; _tile_y++) {
 			if _room_data.tiles[_tile_x][_tile_y] == 1 {
-				var _tile = instance_create_layer(TILE_SIZE * _tile_x,
-												  TILE_SIZE * _tile_y,
-												  "Tiles",
-												  obj_tile);
+				var _tile = instance_create_layer(TILE_SIZE * _tile_x, TILE_SIZE * _tile_y, "Tiles", obj_tile);
 				array_push(_room.tiles, _tile);
 			}
 		}
 	}
-	var _player_x = (_subroom_x - _room_data.x) * SUBROOM_WIDTH * TILE_SIZE + (SUBROOM_WIDTH / 2 + 1.5) * TILE_SIZE;
-	var _player_y = (_subroom_y - _room_data.y) * SUBROOM_HEIGHT * TILE_SIZE + (SUBROOM_HEIGHT / 2 + 3) * TILE_SIZE;
+	var _player_x = ((_subroom_x - _room_data.x) * SUBROOM_WIDTH + 9.5) * TILE_SIZE;
+	var _player_y = ((_subroom_y - _room_data.y) * SUBROOM_HEIGHT + 7.5) * TILE_SIZE;
 	var _player = instance_create_layer(_player_x, _player_y, "Player", obj_player);
 	array_push(_room.entities, _player);
 	_room.world = _world;
