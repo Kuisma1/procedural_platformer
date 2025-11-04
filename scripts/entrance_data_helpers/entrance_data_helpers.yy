@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"entrance_data_helpers",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"entrance_data_helpers",
+  "parent":{
+    "name":"room_data",
+    "path":"folders/Scripts/Data/room_data.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

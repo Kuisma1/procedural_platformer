@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"exit_data_helpers",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"exit_data_helpers",
+  "parent":{
+    "name":"room_data",
+    "path":"folders/Scripts/Data/room_data.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
